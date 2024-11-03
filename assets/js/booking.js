@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function fillUserDetails() {
     const user = parseJwt(token);
     if (user) {
+      console.log(user)
       nameInput.value = user.name;
       emailInput.value = user.email;
     }
