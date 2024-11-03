@@ -46,13 +46,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Auto-fill user details if logged in
   function fillUserDetails() {
-    console.log(token)
-    const user = token;
+    const user = parseJwt(token);
+    console.log(user)
     if (user) {
       nameInput.value = user.name;
       emailInput.value = user.email;
     }
   }
+
+    // Helper function to decode JWT token to extract user info
+    function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
 
   // Open modal when "Book an Appointment" button is clicked
   openModalBtn.addEventListener("click", function() {

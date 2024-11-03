@@ -29,16 +29,16 @@ document.addEventListener("DOMContentLoaded", function() {
         sessionStorage.setItem("token", token);
         const userInfo = parseJwt(token);
         showAlert(`Welcome, ${userInfo.name}`);
+        
+        // Hide Google Login Button after successful sign-in
+        if(userInfo) {
+        document.getElementById("googleLoginButton").style.display = "none";
+    }
         } catch 
           (error) {
           console.error("Error:", error);
           showAlert("Failed to log in with Google. Please try again.");
         };
-  
-     // Hide Google Login Button after successful sign-in
-    if(sessionStorage.getItem("token")) {
-        document.getElementById("googleLoginButton").style.display = "none";
-    }
 }
 
     // Helper function to decode JWT token to extract user info
