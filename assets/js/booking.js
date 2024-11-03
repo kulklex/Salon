@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const emailInput = document.getElementById("customerEmail");
 
   // Check if the user is logged in
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const isLoggedIn = !!token;
 
   // Custom alert elements

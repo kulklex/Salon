@@ -27,9 +27,11 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
           if (data.success) {
-            // Save token in localStorage or handle login success
-            localStorage.setItem("token", data.token);
-            showAlert(`Welcome, ${data.user.name}`);
+            
+        // Store token in session storage to track login state (expires on page close)
+        sessionStorage.setItem("token", token);
+        const userInfo = parseJwt(token);
+        showAlert(`Welcome, ${userInfo.name}`);
           } else {
             showAlert(data.message);
           }
@@ -38,16 +40,12 @@ document.addEventListener("DOMContentLoaded", function() {
           console.error("Error:", error);
           showAlert("Failed to log in with Google. Please try again.");
         });
-
-      const userInfo = parseJwt(token);
-  
-      console.log(userInfo)
-      // Display custom alert on successful login
-      showAlert(`Welcome, ${userInfo.name}`);
     }
   
      // Hide Google Login Button after successful sign-in
-    //  document.getElementById("googleLoginButton").style.display = "none";
+    if(userInfo.name) {
+        document.getElementById("googleLoginButton").style.display = "none";
+    }
 
 
     // Helper function to decode JWT token to extract user info
