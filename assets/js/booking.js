@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Auto-fill user details if logged in
   function fillUserDetails() {
     const user = parseJwt(token);
-    console.log(user)
     if (user) {
       nameInput.value = user.name;
       emailInput.value = user.email;
@@ -172,8 +171,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const response = await fetch(`${API_URL}/create-booking`, {
         method: 'POST',
         headers: { 
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone })
       });
@@ -220,6 +218,25 @@ document.addEventListener("DOMContentLoaded", function() {
       showAlert("An error occurred. Please try again.");
     }
   }
+
+    // Function to check login status and update UI accordingly
+    function updateUI() {
+      const isLoggedIn = !!sessionStorage.getItem("token");
+  
+      // Show or hide Google login button based on login status
+      googleLoginButton.style.display = isLoggedIn ? "none" : "block";
+  
+      // Prevent booking if not logged in
+      openModalBtn.addEventListener("click", function(event) {
+        if (!isLoggedIn) {
+          showAlert("Please log in to create a booking.");
+          event.preventDefault();
+        }
+      });
+    }
+  
+    // Run UI update on page load
+    updateUI();
 
   // Event listener for delete booking button
   document.addEventListener("click", function(event) {
