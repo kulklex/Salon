@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Check if the user is logged in
   const token = sessionStorage.getItem("token");
   const isLoggedIn = !!token;
+  const user = parseJwt(token);
 
   // Custom alert elements
   const alertBox = document.createElement("div");
@@ -46,9 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Auto-fill user details if logged in
   function fillUserDetails() {
-    const user = parseJwt(token);
     if (user) {
-      console.log(user)
       nameInput.value = user.name;
       emailInput.value = user.email;
     }
@@ -174,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
         headers: { 
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone })
+        body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone, userId: user?.jti})
       });
 
       const data = await response.json();
