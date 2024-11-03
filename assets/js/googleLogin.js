@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize the Google Sign-In Button
     window.onload = function () {
       google.accounts.id.initialize({
-        client_id: "YOUR_GOOGLE_CLIENT_ID",
+        client_id: "738754584957-aftsi9qe2riqpuo6sves3q9916ptmqub.apps.googleusercontent.com",
         callback: handleCredentialResponse,
       });
       google.accounts.id.renderButton(
