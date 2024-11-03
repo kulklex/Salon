@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     `;
     alertBox.style.display = "block";
-    setTimeout(() => alertBox.style.display = "none", 3000);
+    setTimeout(() => alertBox.style.display = "none", 5000);
   }
 
   // Function to show the modal

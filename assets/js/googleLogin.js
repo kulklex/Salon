@@ -16,9 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
       // Decode JWT to get user information
       const token = response.credential;
   
-      // Hide Google Login Button after successful sign-in
-      document.getElementById("googleLoginButton").style.display = "none";
-  
       // Send Google token to the backend
       fetch("http://localhost:5000/api/v1/users/google-login", {
         method: "POST",
@@ -50,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   
      // Hide Google Login Button after successful sign-in
-     document.getElementById("googleLoginButton").style.display = "none";
+    //  document.getElementById("googleLoginButton").style.display = "none";
 
 
     // Helper function to decode JWT token to extract user info
