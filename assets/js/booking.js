@@ -7,6 +7,14 @@ document.addEventListener("DOMContentLoaded", function() {
   const closeModalBtn = document.getElementById("closeModal") || bookingModal.querySelector(".close-btn");
   const bookingDateInput = document.getElementById("bookingDate");
 
+  // Elements for user auto-fill
+  const nameInput = document.getElementById("customerName");
+  const emailInput = document.getElementById("customerEmail");
+
+  // Check if the user is logged in
+  const token = localStorage.getItem("token");
+  const isLoggedIn = !!token;
+
   // Custom alert elements
   const alertBox = document.createElement("div");
   alertBox.id = "customAlert";
@@ -27,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Function to show the modal
   function showModal() {
-    bookingModal.style.display = "flex"; // or "block" depending on styling preference
+    bookingModal.style.display = "flex";
     resetModal(); // Reset modal UI on open
   }
 
@@ -36,9 +44,22 @@ document.addEventListener("DOMContentLoaded", function() {
     bookingModal.style.display = "none";
   }
 
+  // Auto-fill user details if logged in
+  function fillUserDetails() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      nameInput.value = user.name;
+      emailInput.value = user.email;
+    }
+  }
+
   // Open modal when "Book an Appointment" button is clicked
   openModalBtn.addEventListener("click", function() {
-    console.log("Open modal button clicked"); // Debugging log
+    if (!isLoggedIn) {
+      showAlert("Please log in to create a booking.");
+      return;
+    }
+    fillUserDetails(); // Fill user details if logged in
     showModal();
   });
 
@@ -63,12 +84,10 @@ document.addEventListener("DOMContentLoaded", function() {
     bookingDateInput.setAttribute("min", `${year}-${month}-${day}`);
   }
 
-  // Call setMinDate on page load to set the minimum booking date to today
-  setMinDate();
+  setMinDate(); // Initialize minimum date on load
 
   // Reset modal form and UI
   function resetModal() {
-    console.log("Resetting modal"); // Debugging log
     document.getElementById("bookingDate").value = '';
     document.getElementById("bookingTime").selectedIndex = 0;
     document.getElementById("availabilityStatus").innerHTML = '';
@@ -87,21 +106,16 @@ document.addEventListener("DOMContentLoaded", function() {
   // Check availability when a date is selected
   document.getElementById("bookingDate").addEventListener("change", async function() {
     const date = this.value;
-    resetTimeOptions(); // Reset all options whenever the date changes
-    console.log("Date selected:", date); // Debugging log
+    resetTimeOptions();
 
     if (date) {
       try {
-        // Send a request to get unavailable slots for this date
         const response = await fetch(`${API_URL}/check-availability`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ date })
         });
         const data = await response.json();
-        console.log("Unavailable times:", data.unavailableTimes); // Debugging log
-
-        // Update time slots based on availability
         updateTimeSlots(data.unavailableTimes || []);
       } catch (error) {
         document.getElementById("availabilityStatus").innerHTML = `<span class="text-danger">Error loading availability. Please try again.</span>`;
@@ -127,13 +141,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Confirm Booking function
   document.getElementById("confirmBooking").addEventListener("click", async function() {
+    if (!isLoggedIn) {
+      showAlert("Please log in to confirm the booking.");
+      return;
+    }
+    
     const date = document.getElementById("bookingDate").value;
     const time = document.getElementById("bookingTime").value;
-    const customerName = document.getElementById("customerName").value;
-    const customerEmail = document.getElementById("customerEmail").value;
+    const customerName = nameInput.value;
+    const customerEmail = emailInput.value;
     const customerPhone = document.getElementById("customerPhone").value;
 
-    // Validate form inputs
     if (!date || !time || !customerName || !customerEmail || !customerPhone) {
       showAlert("Please fill in all details.");
       return;
@@ -142,19 +160,65 @@ document.addEventListener("DOMContentLoaded", function() {
     try {
       const response = await fetch(`${API_URL}/create-booking`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
         body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone })
       });
 
       const data = await response.json();
       if (response.ok) {
         showAlert("Booking confirmed!");
-        hideModal(); // Hide the modal after confirming
+        hideModal(); 
+        // Optionally refresh bookings here if needed
       } else {
         showAlert(data.message);
       }
     } catch (error) {
       showAlert("Error creating booking. Try again later.");
+    }
+  });
+
+  // Function to delete a booking
+  async function deleteBooking(bookingId) {
+    if (!isLoggedIn) {
+      showAlert("Please log in to delete a booking.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/delete-booking/${bookingId}`, {
+        method: 'DELETE',
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        showAlert("Booking deleted successfully.");
+        document.querySelector(`[data-booking-id="${bookingId}"]`).remove();
+      } else {
+        showAlert(data.message || "Failed to delete booking.");
+      }
+    } catch (error) {
+      console.error("Error deleting booking:", error);
+      showAlert("An error occurred. Please try again.");
+    }
+  }
+
+  // Event listener for delete booking button
+  document.addEventListener("click", function(event) {
+    if (event.target.classList.contains("btn-delete-booking")) {
+      const bookingId = event.target.getAttribute("data-booking-id");
+      if (bookingId) {
+        deleteBooking(bookingId);
+      } else {
+        showAlert("Booking ID not found.");
+      }
     }
   });
 });

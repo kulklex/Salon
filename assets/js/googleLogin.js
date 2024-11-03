@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       const userInfo = parseJwt(token);
   
+      console.log(userInfo)
       // Display custom alert on successful login
       showAlert(`Welcome, ${userInfo.name}`);
     }
