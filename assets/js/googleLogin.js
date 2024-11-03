@@ -15,15 +15,43 @@ document.addEventListener("DOMContentLoaded", function() {
     function handleCredentialResponse(response) {
       // Decode JWT to get user information
       const token = response.credential;
-      const userInfo = parseJwt(token);
   
-      // Process user info (userInfo has user details)
-      console.log("User Info:", userInfo);
+      // Hide Google Login Button after successful sign-in
+      document.getElementById("googleLoginButton").style.display = "none";
+  
+      // Send Google token to the backend
+      fetch("http://localhost:5000/api/v1/users/google-login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ token })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Save token in localStorage or handle login success
+            localStorage.setItem("token", data.token);
+            showAlert(`Welcome, ${data.user.name}`);
+          } else {
+            showAlert(data.message);
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          showAlert("Failed to log in with Google. Please try again.");
+        });
+
+      const userInfo = parseJwt(token);
   
       // Display custom alert on successful login
       showAlert(`Welcome, ${userInfo.name}`);
     }
   
+     // Hide Google Login Button after successful sign-in
+     document.getElementById("googleLoginButton").style.display = "none";
+
+
     // Helper function to decode JWT token to extract user info
     function parseJwt(token) {
       const base64Url = token.split('.')[1];
