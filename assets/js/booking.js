@@ -46,7 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Auto-fill user details if logged in
   function fillUserDetails() {
-    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(token)
+    const user = token;
     if (user) {
       nameInput.value = user.name;
       emailInput.value = user.email;

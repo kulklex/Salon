@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
         try {
               // Send Google token to the backend
-      fetch("http://localhost:5000/api/v1/users/google-login", {
+      fetch("http://localhost:5000/api/v1/auth/google-login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
   
      // Hide Google Login Button after successful sign-in
-    if(userInfo.name) {
+    if(sessionStorage.getItem("token")) {
         document.getElementById("googleLoginButton").style.display = "none";
     }
 }
