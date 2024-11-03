@@ -16,37 +16,30 @@ document.addEventListener("DOMContentLoaded", function() {
       // Decode JWT to get user information
       const token = response.credential;
   
-      // Send Google token to the backend
+        try {
+              // Send Google token to the backend
       fetch("http://localhost:5000/api/v1/users/google-login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({ token })
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            
-        // Store token in session storage to track login state (expires on page close)
+      }).then(response => response.json())
+            // Store token in session storage to track login state (expires on page close)
         sessionStorage.setItem("token", token);
         const userInfo = parseJwt(token);
         showAlert(`Welcome, ${userInfo.name}`);
-          } else {
-            showAlert(data.message);
-          }
-        })
-        .catch(error => {
+        } catch 
+          (error) {
           console.error("Error:", error);
           showAlert("Failed to log in with Google. Please try again.");
-        });
-    }
+        };
   
      // Hide Google Login Button after successful sign-in
     if(userInfo.name) {
         document.getElementById("googleLoginButton").style.display = "none";
     }
-
+}
 
     // Helper function to decode JWT token to extract user info
     function parseJwt(token) {
@@ -71,5 +64,5 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.appendChild(alertBox);
       setTimeout(() => alertBox.style.display = "none", 3000);
     }
-  });
+  })
   
