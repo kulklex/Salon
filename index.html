@@ -46,7 +46,16 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <button class="btn-get-started" id="login">Login with Google</button>
+
+
+<!-- Google Sign-In Button -->
+<div id="g_id_onload"
+     data-client_id="738754584957-aftsi9qe2riqpuo6sves3q9916ptmqub.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+</div>
+
+<button id="googleLoginButton">Login with Google</button>
 
     </div>
   </header>
@@ -392,6 +401,7 @@
   <!-- JS Files -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/booking.js"></script>
+  <script src="assets/js/googleLogin.js"></script>
 
 
    <!-- Vendor JS Files -->
@@ -403,6 +413,9 @@
    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
  
+
+    <!-- Google Platform Library -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 
 </html>

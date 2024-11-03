@@ -282,61 +282,7 @@ h6 {
   z-index: 997;
 }
 
-.header .logo {
-  line-height: 1;
-}
 
-.header .logo img {
-  max-height: 36px;
-  margin-right: 8px;
-}
-
-.header .logo h1 {
-  font-size: 32px;
-  font-weight: 300;
-  margin: 0;
-  color: var(--heading-color);
-}
-
-.header .logo span {
-  color: var(--accent-color);
-  font-weight: 400;
-  font-size: 34px;
-  margin-left: 2px;
-}
-
-.header .btn-get-started,
-.header .btn-get-started:focus {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  font-size: 14px;
-  padding: 8px 26px;
-  margin: 0;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-
-.header .btn-get-started:hover,
-.header .btn-get-started:focus:hover {
-  color: var(--contrast-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 15%);
-}
-
-@media (max-width: 1200px) {
-  .header .logo {
-    order: 1;
-  }
-
-  .header .btn-get-started {
-    order: 2;
-    margin: 0 15px 0 0;
-    padding: 6px 20px;
-  }
-
-  .header .navmenu {
-    order: 3;
-  }
-}
 
 .scrolled .header {
   box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
