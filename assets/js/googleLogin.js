@@ -30,9 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (sessionStorage.getItem(token)) {
           const userInfo = parseJwt(token);
         showAlert(`Welcome, ${userInfo.name}`);
-        
-      //fetch user
-        fetchUserBookings();
       }
         
 
@@ -69,62 +66,6 @@ function toggleLoginUI(isLoggedIn) {
    toggleLoginUI(false);
  }
 
-// Update this function in your main JavaScript file
-async function fetchUserBookings() {
-  const token = sessionStorage.getItem("token");
-  if (!token) {
-    showAlert("Please log in to view your bookings.");
-    return;
-  }
-
-  
-    const response = await fetch("http://localhost:5000/api/v1/auth/user-bookings", {
-      headers: { "Authorization": `Bearer ${token}` }
-    });
-
-    const data = await response.json();
-    if (data.success && data.bookings.length > 0) {
-      displayBookings(data.bookings);
-    } else {
-      document.getElementById("noBookingsMessage").style.display = `"block"`;
-    }
-}
-
-// Function to display bookings on the frontend
-function displayBookings(bookings) {
-  const bookingsContainer = document.getElementById("bookingsContainer");
-  bookingsContainer.innerHTML = ""; // Clear existing bookings
-  document.getElementById("noBookingsMessage").style.display = "none"; // Hide "No bookings" message
-
-  bookings.forEach(booking => {
-    const bookingElement = document.createElement("div");
-    bookingElement.className = "booking-entry";
-    bookingElement.innerHTML = `
-      <div>
-        <p><strong>Date:</strong> ${booking.date}</p>
-        <p><strong>Time:</strong> ${booking.time}</p>
-      </div>
-      <button class="btn-delete-booking" data-booking-id="${booking._id}">Delete Booking</button>
-    `;
-    bookingsContainer.appendChild(bookingElement);
-  });
-  document.getElementById("userBookingsSection").style.display = "block"; 
-}
-
-// Add a call to `fetchUserBookings()` if the token exists on page load
-if (sessionStorage.getItem("token")) {
-  fetchUserBookings();
-}
-
-
-
-// Event listener for Delete button
-document.addEventListener("click", function(event) {
-  if (event.target.classList.contains("btn-delete-booking")) {
-    const bookingId = event.target.getAttribute("data-booking-id");
-    deleteBooking(bookingId);
-  }
-});
 
 // Prevent booking if not logged in
 document.getElementById("openBookingSystem").addEventListener("click", function(event) {
@@ -134,29 +75,6 @@ document.getElementById("openBookingSystem").addEventListener("click", function(
   }
 });
 
-// Function to delete booking
-async function deleteBooking(bookingId) {
-  const token = sessionStorage.getItem("token");
-
-  try {
-    const response = await fetch(`http://localhost:5000/api/v1/bookings/delete-booking/${bookingId}`, {
-      method: "DELETE",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-    });
-
-    const data = await response.json();
-    if (data.success) {
-      showAlert("Booking deleted successfully.");
-      fetchUserBookings(); // Refresh bookings list
-    } else {
-      showAlert(data.message);
-    }
-  } catch (error) {
-    showAlert("Error deleting booking. Please try again.");
-  }
-}
 
     // Helper function to decode JWT token to extract user info
     function parseJwt(token) {

@@ -73,5 +73,40 @@ document.addEventListener("DOMContentLoaded", function() {
   
     // Fetch bookings on page load
     fetchUserBookings();
+
+
+    // Event listener for Delete button
+document.addEventListener("click", function(event) {
+    if (event.target.classList.contains("btn-delete-booking")) {
+      const bookingId = event.target.getAttribute("data-booking-id");
+      deleteBooking(bookingId);
+    }
+  });
+
+    // Function to delete booking
+async function deleteBooking(bookingId) {
+    const token = sessionStorage.getItem("token");
+  
+    try {
+      const response = await fetch(`http://localhost:5000/api/v1/bookings/delete-booking/${bookingId}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
+  
+      const data = await response.json();
+      if (data.success) {
+        showAlert("Booking deleted successfully.");
+        fetchUserBookings(); // Refresh bookings list
+      } else {
+        showAlert(data.message);
+      }
+    } catch (error) {
+      showAlert("Error deleting booking. Please try again.");
+    }
+  }
+
+
   });
   
