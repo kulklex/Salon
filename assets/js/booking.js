@@ -64,10 +64,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
   // Open modal when "Book an Appointment" button is clicked
-  openModalBtn.addEventListener("click", function() {
+  openModalBtn.addEventListener("click", function(event) {
+    console.log("Button Clicked")
     if (!isLoggedIn) {
       showAlert("Please log in to create a booking.");
-      return;
+      event.preventDefault();
     }
     fillUserDetails(); // Fill user details if logged in
     showModal();
@@ -189,36 +190,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // Function to delete a booking
-  async function deleteBooking(bookingId) {
-    if (!isLoggedIn) {
-      showAlert("Please log in to delete a booking.");
-      return;
-    }
-
-    try {
-      const response = await fetch(`${API_URL}/delete-booking/${bookingId}`, {
-        method: 'DELETE',
-        headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
-        }
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        showAlert("Booking deleted successfully.");
-        document.querySelector(`[data-booking-id="${bookingId}"]`).remove();
-      } else {
-        showAlert(data.message || "Failed to delete booking.");
-      }
-    } catch (error) {
-      console.error("Error deleting booking:", error);
-      showAlert("An error occurred. Please try again.");
-    }
-  }
-
     // Function to check login status and update UI accordingly
     function updateUI() {
       const isLoggedIn = !!sessionStorage.getItem("token");
@@ -227,26 +198,14 @@ document.addEventListener("DOMContentLoaded", function() {
       googleLoginButton.style.display = isLoggedIn ? "none" : "block";
   
       // Prevent booking if not logged in
-      openModalBtn.addEventListener("click", function(event) {
-        if (!isLoggedIn) {
-          showAlert("Please log in to create a booking.");
-          event.preventDefault();
-        }
-      });
+      // openModalBtn.addEventListener("click", function(event) {
+      //   if (!isLoggedIn) {
+      //     showAlert("Please log in to create a booking.");
+      //     event.preventDefault();
+      //   }
+      // });
     }
   
     // Run UI update on page load
     updateUI();
-
-  // Event listener for delete booking button
-  document.addEventListener("click", function(event) {
-    if (event.target.classList.contains("btn-delete-booking")) {
-      const bookingId = event.target.getAttribute("data-booking-id");
-      if (bookingId) {
-        deleteBooking(bookingId);
-      } else {
-        showAlert("Booking ID not found.");
-      }
-    }
-  });
 });
