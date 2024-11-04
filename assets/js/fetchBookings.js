@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
           }
       
           const data = await response.json();
+          console.log(data)
           if (data.success && data.bookings.length > 0) {
             displayBookings(data.bookings);
           } else {
