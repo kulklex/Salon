@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function() {
         sessionStorage.setItem("token", token);
         const userInfo = parseJwt(token);
         showAlert(`Welcome, ${userInfo.name}`);
+        
+        window.location.href('/');
         fetchUserBookings();
         // Hide Google Login Button after successful sign-in
         if(userInfo) {
@@ -101,6 +103,14 @@ document.addEventListener("click", function(event) {
   if (event.target.classList.contains("btn-delete-booking")) {
     const bookingId = event.target.getAttribute("data-booking-id");
     deleteBooking(bookingId);
+  }
+});
+
+// Prevent booking if not logged in
+document.addEventListener("click", function(event) {
+  if (!sessionStorage.getItem("token")) {
+    showAlert("Please log in to create a booking.");
+    event.preventDefault();
   }
 });
 

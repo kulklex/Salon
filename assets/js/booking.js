@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Helper function to decode JWT token to extract user info
     function parseJwt(token) {
-      const base64Url = token.split('.')[1];
+      const base64Url = token?.split('.')[1];
       const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
       const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // Show or hide Google login button based on login status
       googleLoginButton.style.display = isLoggedIn ? "none" : "block";
   
-      // Prevent booking if not logged in
+      // // Prevent booking if not logged in
       // openModalBtn.addEventListener("click", function(event) {
       //   if (!isLoggedIn) {
       //     showAlert("Please log in to create a booking.");
