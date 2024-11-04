@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       
         try {
-          const response = await fetch("http://localhost:5000/api/v1/bookings/user-bookings", {
+          const response = await fetch("http://localhost:5000/api/v1/auth/user-bookings", {
             headers: { "Authorization": `Bearer ${token}` }
           });
       
