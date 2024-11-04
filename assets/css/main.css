@@ -935,6 +935,15 @@ section,
   .hero .animated {
     max-width: 80%;
   }
+
+  .site-name {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 17px;
+    padding-top: 7px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -952,6 +961,15 @@ section,
   .hero .btn-get-started,
   .hero .btn-watch-video {
     font-size: 13px;
+  }
+
+  .site-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 17px;
+    padding-top: 7px;
   }
 }
 

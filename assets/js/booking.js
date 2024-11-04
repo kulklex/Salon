@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to check login status and update UI accordingly
     function updateUI() {
       const isLoggedIn = !!sessionStorage.getItem("token");
-  
+      console.log("Page loaded")
       // Show or hide Google login button based on login status
       googleLoginButton.style.display = isLoggedIn ? "none" : "block";
   
