@@ -72,7 +72,6 @@ function toggleLoginUI(isLoggedIn) {
 // Update this function in your main JavaScript file
 async function fetchUserBookings() {
   const token = sessionStorage.getItem("token");
-  console.log("Token: " + token)
   if (!token) {
     showAlert("Please log in to view your bookings.");
     return;
@@ -106,7 +105,6 @@ function displayBookings(bookings) {
     bookingElement.className = "booking-entry";
     bookingElement.innerHTML = `
       <div>
-        <p><strong>Customer:</strong> ${booking.customerName}</p>
         <p><strong>Date:</strong> ${booking.date}</p>
         <p><strong>Time:</strong> ${booking.time}</p>
       </div>

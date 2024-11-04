@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
         headers: { 
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone, userId: user?.jti})
+        body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone})
       });
 
       const data = await response.json();
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to check login status and update UI accordingly
     function updateUI() {
       const isLoggedIn = !!sessionStorage.getItem("token");
-      console.log("Page loaded")
+      
       // Show or hide Google login button based on login status
       googleLoginButton.style.display = isLoggedIn ? "none" : "block";
     }
