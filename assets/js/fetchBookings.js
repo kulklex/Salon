@@ -24,29 +24,38 @@ document.addEventListener("DOMContentLoaded", function() {
   
     // Fetch user bookings from the backend
     async function fetchUserBookings() {
-      try {
-        const response = await fetch("http://localhost:5000/api/v1/auth/user-bookings", {
-          headers: { "Authorization": `Bearer ${token}` }
-        });
-  
-        if (!response.ok) {
-          const errorData = await response.json();
-          console.error("Error response data:", errorData);
-          showAlert(errorData.message || "Error fetching bookings. Please try again.");
+        const token = sessionStorage.getItem("token");
+        if (!token) {
+          showAlert("Please log in to view your bookings.");
+          window.location.href = "login.html";
           return;
         }
-  
-        const data = await response.json();
-        if (data.success && data.bookings.length > 0) {
-          displayBookings(data.bookings);
-        } else {
-          document.getElementById("noBookingsMessage").style.display = "block";
+      
+        try {
+          const response = await fetch("http://localhost:5000/api/v1/bookings/user-bookings", {
+            headers: { "Authorization": `Bearer ${token}` }
+          });
+      
+          // Handle cases where response isn't okay
+          if (!response.ok) {
+            const errorData = await response.json();
+            console.error("Error response data:", errorData);
+            showAlert(errorData.message || "Error fetching bookings. Please try again.");
+            return; // Make sure to exit function if there's an error
+          }
+      
+          const data = await response.json();
+          if (data.success && data.bookings.length > 0) {
+            displayBookings(data.bookings);
+          } else {
+            document.getElementById("noBookingsMessage").style.display = "block";
+          }
+        } catch (error) {
+          console.error("Fetch error:", error);
+          showAlert("Error fetching bookings. Please try again.");
         }
-      } catch (error) {
-        console.error("Fetch error:", error);
-        showAlert("Error fetching bookings. Please try again.");
       }
-    }
+      
   
     // Display bookings on the page
     function displayBookings(bookings) {
