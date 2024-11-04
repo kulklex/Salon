@@ -27,13 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
       }).then(response => response.json())
             // Store token in session storage to track login state (expires on page close)
         sessionStorage.setItem("token", token);
-        const userInfo = parseJwt(token);
+        if (sessionStorage.getItem(token)) {
+          const userInfo = parseJwt(token);
         showAlert(`Welcome, ${userInfo.name}`);
         
-        window.location.href('/');
-
-        //fetch user
+      //fetch user
         fetchUserBookings();
+      }
+        
 
         // Hide Google Login Button after successful sign-in
         toggleLoginUI(true)
@@ -71,6 +72,7 @@ function toggleLoginUI(isLoggedIn) {
 // Update this function in your main JavaScript file
 async function fetchUserBookings() {
   const token = sessionStorage.getItem("token");
+  console.log("Token: " + token)
   if (!token) {
     showAlert("Please log in to view your bookings.");
     return;
