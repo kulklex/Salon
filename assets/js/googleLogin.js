@@ -77,7 +77,7 @@ async function fetchUserBookings() {
     return;
   }
 
-  try {
+  
     const response = await fetch("http://localhost:5000/api/v1/auth/user-bookings", {
       headers: { "Authorization": `Bearer ${token}` }
     });
@@ -89,10 +89,6 @@ async function fetchUserBookings() {
     } else {
       document.getElementById("noBookingsMessage").style.display = `"block"`;
     }
-  } catch (error) {
-    console.log(error)
-    showAlert("Error fetching bookings. Please try again.");
-  }
 }
 
 // Function to display bookings on the frontend
