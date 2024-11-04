@@ -24,7 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({ token })
-      }).then(response => response.json())
+      }).then(response => {
+        console.log(response)
+        response.json()})
             // Store token in session storage to track login state (expires on page close)
         sessionStorage.setItem("token", token);
         if (sessionStorage.getItem(token)) {
