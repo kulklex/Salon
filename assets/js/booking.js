@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Open modal when "Book an Appointment" button is clicked
   openModalBtn.addEventListener("click", function(event) {
-    console.log("Button Clicked")
     if (!isLoggedIn) {
       showAlert("Please log in to create a booking.");
       event.preventDefault();
@@ -179,14 +178,6 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log("Page loaded")
       // Show or hide Google login button based on login status
       googleLoginButton.style.display = isLoggedIn ? "none" : "block";
-  
-      // // Prevent booking if not logged in
-      // openModalBtn.addEventListener("click", function(event) {
-      //   if (!isLoggedIn) {
-      //     showAlert("Please log in to create a booking.");
-      //     event.preventDefault();
-      //   }
-      // });
     }
   
     // Run UI update on page load
@@ -199,7 +190,6 @@ document.addEventListener("DOMContentLoaded", function() {
           alertBox.innerHTML = `
             <div class="alert-content">
               <span>${message}</span>
-              <button class="btn-close" onclick="this.parentElement.style.display='none'">&times;</button>
             </div>
           `;
           document.body.appendChild(alertBox);

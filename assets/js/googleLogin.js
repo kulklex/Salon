@@ -31,18 +31,42 @@ document.addEventListener("DOMContentLoaded", function() {
         showAlert(`Welcome, ${userInfo.name}`);
         
         window.location.href('/');
+
+        //fetch user
         fetchUserBookings();
+
         // Hide Google Login Button after successful sign-in
-        if(userInfo) {
-        document.getElementById("googleLoginButton").style.display = "none";
-        document.getElementById("myBookings").style.display = "block";
-    }
+        toggleLoginUI(true)
         } catch 
           (error) {
           console.error("Error:", error);
           showAlert("Failed to log in with Google. Please try again.");
         };
 }
+
+// Helper function to toggle UI elements based on login status
+function toggleLoginUI(isLoggedIn) {
+  const googleLoginButton = document.getElementById("googleLoginButton");
+  const myBookingsLink = document.getElementById("myBookings");
+
+  if (isLoggedIn) {
+    googleLoginButton.style.display = "none";
+    myBookingsLink.style.display = "block";
+  } else {
+    googleLoginButton.style.display = "block";
+    myBookingsLink.style.display = "none";
+  }
+}
+
+ // Check login status on page load and update UI
+ const token = sessionStorage.getItem("token");
+ if (token) {
+   // If a token exists, hide Google Login and show "My Bookings"
+   toggleLoginUI(true);
+ } else {
+   // If no token, show Google Login button
+   toggleLoginUI(false);
+ }
 
 // Update this function in your main JavaScript file
 async function fetchUserBookings() {
@@ -64,7 +88,7 @@ async function fetchUserBookings() {
       document.getElementById("noBookingsMessage").style.display = "block";
     }
   } catch (error) {
-    console.error(error)
+    console.log(error)
     showAlert("Error fetching bookings. Please try again.");
   }
 }
@@ -107,7 +131,7 @@ document.addEventListener("click", function(event) {
 });
 
 // Prevent booking if not logged in
-document.addEventListener("click", function(event) {
+document.getElementById("openBookingSystem").addEventListener("click", function(event) {
   if (!sessionStorage.getItem("token")) {
     showAlert("Please log in to create a booking.");
     event.preventDefault();
@@ -155,7 +179,6 @@ async function deleteBooking(bookingId) {
       alertBox.innerHTML = `
         <div class="alert-content">
           <span>${message}</span>
-          <button class="btn-close" onclick="this.parentElement.style.display='none'">&times;</button>
         </div>
       `;
       document.body.appendChild(alertBox);
