@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
         headers: { 
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone, userId: user?.jti})
+        body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone})
       });
 
       const data = await response.json();

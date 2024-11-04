@@ -86,7 +86,7 @@ async function fetchUserBookings() {
     if (data.success && data.bookings.length > 0) {
       displayBookings(data.bookings);
     } else {
-      document.getElementById("noBookingsMessage").style.display = "block";
+      document.getElementById("noBookingsMessage").style.display = `"block"`;
     }
   } catch (error) {
     console.log(error)
@@ -112,7 +112,7 @@ function displayBookings(bookings) {
     `;
     bookingsContainer.appendChild(bookingElement);
   });
-  document.getElementById("userBookingsSection").style.display = "block"; // Show bookings section
+  document.getElementById("userBookingsSection").style.display = "block"; 
 }
 
 // Add a call to `fetchUserBookings()` if the token exists on page load
