@@ -24,9 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({ token })
-      }).then(response => {
-        console.log(response)
-        response.json()})
+      }).then(response => response.json())
             // Store token in session storage to track login state (expires on page close)
         sessionStorage.setItem("token", token);
         if (sessionStorage.getItem(token)) {
@@ -85,6 +83,7 @@ async function fetchUserBookings() {
     });
 
     const data = await response.json();
+    console.log(data)
     if (data.success && data.bookings.length > 0) {
       displayBookings(data.bookings);
     } else {
