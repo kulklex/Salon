@@ -62,6 +62,7 @@ async function fetchUserBookings() {
       document.getElementById("noBookingsMessage").style.display = "block";
     }
   } catch (error) {
+    console.error(error)
     showAlert("Error fetching bookings. Please try again.");
   }
 }

@@ -16,23 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const isLoggedIn = !!token;
   const user = parseJwt(token);
 
-  // Custom alert elements
-  const alertBox = document.createElement("div");
-  alertBox.id = "customAlert";
-  alertBox.className = "custom-alert";
-  alertBox.style.display = "none";
-  document.body.appendChild(alertBox);
-
-  // Function to show a custom alert message
-  function showAlert(message) {
-    alertBox.innerHTML = `
-      <div class="alert-content">
-        <span>${message}</span>
-      </div>
-    `;
-    alertBox.style.display = "block";
-    setTimeout(() => alertBox.style.display = "none", 5000);
-  }
 
   // Function to show the modal
   function showModal() {
@@ -208,4 +191,18 @@ document.addEventListener("DOMContentLoaded", function() {
   
     // Run UI update on page load
     updateUI();
+
+        // Function to show a custom alert message
+        function showAlert(message) {
+          const alertBox = document.createElement("div");
+          alertBox.className = "custom-alert";
+          alertBox.innerHTML = `
+            <div class="alert-content">
+              <span>${message}</span>
+              <button class="btn-close" onclick="this.parentElement.style.display='none'">&times;</button>
+            </div>
+          `;
+          document.body.appendChild(alertBox);
+          setTimeout(() => alertBox.style.display = "none", 3000);
+        }
 });
