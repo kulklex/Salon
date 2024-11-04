@@ -85,6 +85,8 @@ async function fetchUserBookings() {
     const data = await response.json();
     if (data.success && data.bookings.length > 0) {
       displayBookings(data.bookings);
+    } else if (data.bookings.length == 0) {
+      document.getElementById("noBookingsMessage").style.display = "block"
     } else {
       document.getElementById("noBookingsMessage").style.display = "block";
     }
@@ -97,7 +99,6 @@ async function fetchUserBookings() {
 // Function to display bookings on the frontend
 function displayBookings(bookings) {
   const bookingsContainer = document.getElementById("bookingsContainer");
-  bookingsContainer.innerHTML = ""; // Clear existing bookings
   document.getElementById("noBookingsMessage").style.display = "none"; // Hide "No bookings" message
 
   bookings.forEach(booking => {
