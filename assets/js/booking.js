@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function() {
   // Elements for user auto-fill
   const nameInput = document.getElementById("customerName");
   const emailInput = document.getElementById("customerEmail");
-  const selectedStyle = document.getElementById("styleSelect").value;
+  
+  const styleSelectElement = document.getElementById("styleSelect");
+  const selectedStyle = styleSelectElement.options[styleSelectElement.selectedIndex].value;
   const bookingNote = document.getElementById("bookingNote").value;
 
   // Check if the user is logged in
@@ -149,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customerPhone = document.getElementById("customerPhone").value;
 
     if (!date || !time || !customerName || !customerEmail || !customerPhone || selectedStyle === "") {
+      console.log("Selected Style:", selectedStyle)
       showAlert("Please fill in all details.");
       return;
     }
