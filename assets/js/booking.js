@@ -7,9 +7,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const closeModalBtn = document.getElementById("closeModal") || bookingModal.querySelector(".close-btn");
   const bookingDateInput = document.getElementById("bookingDate");
 
+
   // Elements for user auto-fill
   const nameInput = document.getElementById("customerName");
   const emailInput = document.getElementById("customerEmail");
+  const selectedStyle = document.getElementById("styleSelect").value;
+  const bookingNote = document.getElementById("bookingNote").value;
 
   // Check if the user is logged in
   const token = sessionStorage.getItem("token");
@@ -145,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customerEmail = emailInput.value;
     const customerPhone = document.getElementById("customerPhone").value;
 
-    if (!date || !time || !customerName || !customerEmail || !customerPhone) {
+    if (!date || !time || !customerName || !customerEmail || !customerPhone || selectedStyle) {
       showAlert("Please fill in all details.");
       return;
     }
@@ -156,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function() {
         headers: { 
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone})
+        body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone, selectedStyle, bookingNote})
       });
 
       const data = await response.json();
