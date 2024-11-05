@@ -32,15 +32,54 @@ document.addEventListener("DOMContentLoaded", function() {
         showAlert(`Welcome, ${userInfo.name}`);
       }
         
-
         // Hide Google Login Button after successful sign-in
         toggleLoginUI(true)
+
+        // Refresh page for better UX
+        window.location.href="/"
         } catch 
           (error) {
           console.error("Error:", error);
           showAlert("Failed to log in with Google. Please try again.");
         };
 }
+
+// Function to perform silent re-authentication
+function silentReauthenticate() {
+  google.accounts.id.prompt((notification) => {
+    if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+      console.warn("User is not signed in or prompt is blocked.");
+    } else {
+      console.log("Re-authenticated silently.");
+    }
+  });
+}
+
+// Check if token exists and attempt re-authentication on expiration
+function checkTokenExpiration() {
+  const token = sessionStorage.getItem("token");
+
+  // If token doesn't exist, show Google login button
+  if (!token) {
+    googleLoginButton.style.display = "block";
+    return;
+  }
+
+  // Decode token to check its expiration
+  const payload = JSON.parse(atob(token.split('.')[1]));
+  const tokenExpiration = payload.exp * 1000;
+  const currentTime = Date.now();
+
+  // If token is about to expire within 5 minutes, silently re-authenticate
+  if (tokenExpiration - currentTime < 5 * 60 * 1000) {
+    silentReauthenticate();
+  }
+}
+
+// Run token expiration check on load and every 15 minutes
+checkTokenExpiration();
+setInterval(checkTokenExpiration, 15 * 60 * 1000); // Check every 15 minutes
+
 
 // Helper function to toggle UI elements based on login status
 function toggleLoginUI(isLoggedIn) {
