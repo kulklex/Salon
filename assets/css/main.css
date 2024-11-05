@@ -70,28 +70,6 @@ button {
   border: none;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  background-color: #fff;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 400px; /* Could be more or less, depending on screen size */
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 /* Close Button */
 .close {
@@ -135,6 +113,7 @@ button {
 /* Modal Dialog */
 .custom-modal-dialog {
   max-width: 500px;
+  margin: 15% auto;
   width: 90%; /* Responsive on smaller screens */
   max-height: 80%; /* Limit the height */
   overflow: hidden; /* Hide overflow outside of modal */
@@ -156,7 +135,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--background-color);
+  background-color: var(--accent-color);
   padding: 0px 15px 0px 15px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -231,8 +210,7 @@ button {
 .custom-modal-footer {
   display: flex;
   justify-content: center;
-  padding: 20px;
-  margin: 10px;
+  padding: 15px;
   background-color: #f1f1f1;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -1067,6 +1045,90 @@ section,
   }
 }
 
+/*--------------------------------------------------------------
+# Modal Section
+--------------------------------------------------------------*/
+/* Modal overlay and hidden styles */
+.custom-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal dialog styling */
+.custom-modal-dialog {
+  background: white;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.custom-modal-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.custom-modal-body {
+  padding: 16px;
+}
+
+.custom-modal-footer {
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+/* Close button styling in header */
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #ccc;
+}
+
+/* Confirm and Close buttons styling */
+.btn-confirm {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.close-modal-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 /* Form controls styling */
 .form-control {
