@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
   
 
   // Other elements
-  const selectedStyle = document.getElementById("styleSelect").value;
-  const bookingNote = document.getElementById("bookingNote").value;
+  const selectedStyleInput = document.querySelector("#styleSelect")
+  const bookingNoteInput = document.getElementById("bookingNote")
 
   console.log("Selected Style:", selectedStyle)
 
@@ -152,6 +152,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const customerName = nameInput.value;
     const customerEmail = emailInput.value;
     const customerPhone = document.getElementById("customerPhone").value;
+    const selectedStyle = selectedStyleInput.value;
+    const bookingNote = bookingNoteInput.value;
 
     if (!date || !time || !customerName || !customerEmail || !customerPhone || selectedStyle === "") {
       console.log("Selected Style:", selectedStyle)
