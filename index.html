@@ -79,53 +79,53 @@
     </section><!-- /Hero Section -->
   
     <!-- Booking Modal -->
-    <section>
-      <div id="bookingModal" class="custom-modal container">
-        <div class="custom-modal-dialog">
-          <div class="custom-modal-content">
-            
-            <!-- Modal Header -->
-            <div class="custom-modal-header text-center bg-primary">
-              <h5 class="custom-modal-title">Book an Appointment</h5>
-              <button type="button" class="close-btn" id="closeModal">&times;</button>
-            </div>
-            
-            <!-- Modal Body -->
-            <div class="custom-modal-body">
-              
-              <!-- Date Selection -->
-              <div class="form-group">
-                <label for="bookingDate">Select Date</label>
-                <input type="date" id="bookingDate" class="form-control" required>
-              </div>
-              
-              <!-- Time Selection -->
-              <div class="form-group">
-                <label for="bookingTime">Select Time</label>
-                <select id="bookingTime" class="form-control" required>
-                  <option value="">Choose a time slot...</option>
-                  <option value="09:00">09:00 AM</option>
-                  <option value="12:00">12:00 PM</option>
-                  <option value="15:00">03:00 PM</option>
-                </select>
-                <small id="availabilityStatus" class="form-text mt-2">Please select an available time.</small>
-              </div>
-    
-              <!-- Customer Details -->
-              <div class="form-group">
-                <label for="customerName">Name</label>
-                <input type="text" id="customerName" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="customerEmail">Email</label>
-                <input type="email" id="customerEmail" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="customerPhone">Phone</label>
-                <input type="tel" id="customerPhone" class="form-control" required>
-              </div>
-            </div>
-           
+<section>
+  <div id="bookingModal" class="custom-modal">
+    <div class="custom-modal-dialog">
+      <div class="custom-modal-content">
+        
+        <!-- Modal Header -->
+        <div class="custom-modal-header text-center">
+          <h5 class="custom-modal-title">Book an Appointment</h5>
+          <button type="button" class="close-btn" id="closeModal">&times;</button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="custom-modal-body">
+          
+          <!-- Date Selection -->
+          <div class="form-group">
+            <label for="bookingDate">Select Date</label>
+            <input type="date" id="bookingDate" class="form-control" required>
+          </div>
+          
+          <!-- Time Selection -->
+          <div class="form-group">
+            <label for="bookingTime">Select Time</label>
+            <select id="bookingTime" class="form-control" required>
+              <option value="">Choose a time slot...</option>
+              <option value="09:00">09:00 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="15:00">03:00 PM</option>
+            </select>
+            <small id="availabilityStatus" class="form-text mt-2">Please select an available time.</small>
+          </div>
+
+          <!-- Customer Details -->
+          <div class="form-group">
+            <label for="customerName">Name</label>
+            <input type="text" id="customerName" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="customerEmail">Email</label>
+            <input type="email" id="customerEmail" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="customerPhone">Phone</label>
+            <input type="tel" id="customerPhone" class="form-control" required>
+          </div>
+
+          <!-- Style Selection -->
           <div class="form-group">
             <label for="styleSelect">Choose a Style</label>
             <select id="styleSelect" class="form-control" required>
@@ -142,20 +142,24 @@
             </select>
           </div>
 
-          
+          <!-- Note Section -->
           <div class="form-group">
             <label for="bookingNote">Add a Note</label>
-            <textarea id="bookingNote" name="bookingNote" rows="4" class="form-control" placeholder=" Extra Services"></textarea>
+            <textarea id="bookingNote" name="bookingNote" rows="4" class="form-control" placeholder="Extra Services"></textarea>
           </div>
-            
-            <!-- Modal Footer -->
-            <div class="custom-modal-footer">
-              <button id="confirmBooking" class="btn-confirm">Confirm Booking</button>
-            </div>
-          </div>
+
         </div>
+        
+        <!-- Modal Footer -->
+        <div class="custom-modal-footer">
+          <button id="confirmBooking" class="btn-confirm">Confirm Booking</button>
+        </div>
+        
       </div>
-    </section> <!-- /Booking Modal -->
+    </div>
+  </div>
+</section>
+ <!-- /Booking Modal -->
     
     <!-- Custom Alert Box -->
     <div id="customAlert" class="custom-alert" style="display: none;">
@@ -432,7 +436,6 @@
 
    <!-- Vendor JS Files -->
    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   <script src="assets/vendor/php-email-form/validate.js"></script>
    <script src="assets/vendor/aos/aos.js"></script>
    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
