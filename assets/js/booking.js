@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const customerEmail = emailInput.value;
     const customerPhone = document.getElementById("customerPhone").value;
 
-    if (!date || !time || !customerName || !customerEmail || !customerPhone || !selectedStyle) {
+    if (!date || !time || !customerName || !customerEmail || !customerPhone || selectedStyle === "") {
       showAlert("Please fill in all details.");
       return;
     }
