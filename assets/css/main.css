@@ -136,16 +136,19 @@ button {
 .custom-modal-dialog {
   max-width: 500px;
   width: 90%; /* Responsive on smaller screens */
-  margin: auto;
+  max-height: 80%; /* Limit the height */
+  overflow: hidden; /* Hide overflow outside of modal */
 }
 
 /* Modal Content */
 .custom-modal-content {
   background-color: #fff;
-  padding: 30px;
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow */
-  text-align: left;
+  padding: 0; /* Remove padding to control each section */
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; /* Column layout for scrolling */
+  height: 100%;
 }
 
 /* Modal Header */
@@ -154,7 +157,7 @@ button {
   align-items: center;
   justify-content: space-between;
   background-color: #007bff;
-  padding: 15px;
+  padding: 0px 15px 0px 15px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
@@ -185,6 +188,8 @@ button {
 /* Modal Body */
 .custom-modal-body {
   padding: 20px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: calc(80vh - 120px); /* Adjust max-height to fit within modal */
 }
 
 .custom-modal-body .form-group {
@@ -226,8 +231,10 @@ button {
 .custom-modal-footer {
   display: flex;
   justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding: 15px;
+  background-color: #f1f1f1;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .btn-confirm {
