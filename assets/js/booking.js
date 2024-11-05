@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
 
   // Other elements
-  const styleSelectElement = document.getElementById("styleSelect");
-  const selectedStyle = styleSelectElement.options[styleSelectElement.selectedIndex].value;
+  const selectedStyle = document.getElementById("styleSelect").value;
   const bookingNote = document.getElementById("bookingNote").value;
 
   console.log("Selected Style:", selectedStyle)
