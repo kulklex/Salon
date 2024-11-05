@@ -12,9 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
   const nameInput = document.getElementById("customerName");
   const emailInput = document.getElementById("customerEmail");
   
+
+  // Other elements
   const styleSelectElement = document.getElementById("styleSelect");
   const selectedStyle = styleSelectElement.options[styleSelectElement.selectedIndex].value;
   const bookingNote = document.getElementById("bookingNote").value;
+
+  console.log("Selected Style:", selectedStyle)
 
   // Check if the user is logged in
   const token = sessionStorage.getItem("token");
