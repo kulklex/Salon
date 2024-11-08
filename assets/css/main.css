@@ -59,7 +59,6 @@ body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
-  margin: 20px;
 }
 
 
@@ -909,9 +908,8 @@ section,
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  min-height: 70vh;
+  min-height: 80vh;
   position: relative;
-  padding: 120px 0 20px 0;
   display: flex;
   align-items: center;
   background: url("../img/black-woman.jpg") center center;
@@ -982,6 +980,7 @@ section,
 }
 
 @media (min-width: 992px) {
+
   .hero .animated {
     max-width: 45%;
   }
@@ -994,6 +993,7 @@ section,
 }
 
 @media (max-width: 575px) {
+
   .hero .animated {
     max-width: 80%;
   }

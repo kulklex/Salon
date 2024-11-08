@@ -14,15 +14,16 @@ document.addEventListener("DOMContentLoaded", function() {
   
 
   // Other elements
-  const selectedStyle = document.querySelector("#styleSelect").value;
+  const selectedElement = document.getElementById("styleSelect");
+  const selectedStyle = selectedElement.value;
   const bookingNote = document.getElementById("bookingNote").value;
 
   console.log("Selected Style:", selectedStyle)
 
   // Check if the user is logged in
-  const token = sessionStorage.getItem("token");
-  const isLoggedIn = !!token;
-  const user = parseJwt(token);
+  // const token = sessionStorage.getItem("token");
+  // const isLoggedIn = !!token;
+  // const user = parseJwt(token);
 
 
   // Function to show the modal
@@ -37,30 +38,25 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Auto-fill user details if logged in
-  function fillUserDetails() {
-    if (user) {
-      nameInput.value = user.name;
-      emailInput.value = user.email;
-    }
-  }
+  // function fillUserDetails() {
+  //   if (user) {
+  //     nameInput.value = user.name;
+  //     emailInput.value = user.email;
+  //   }
+  // }
 
     // Helper function to decode JWT token to extract user info
-    function parseJwt(token) {
-      const base64Url = token?.split('.')[1];
-      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-      }).join(''));
-      return JSON.parse(jsonPayload);
-    }
+    // function parseJwt(token) {
+    //   const base64Url = token?.split('.')[1];
+    //   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    //   const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+    //     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    //   }).join(''));
+    //   return JSON.parse(jsonPayload);
+    // }
 
   // Open modal when "Book an Appointment" button is clicked
   openModalBtn.addEventListener("click", function(event) {
-    if (!isLoggedIn) {
-      showAlert("Please log in to create a booking.");
-      event.preventDefault();
-    }
-    fillUserDetails(); // Fill user details if logged in
     showModal();
   });
 
@@ -142,11 +138,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Confirm Booking function
   document.getElementById("confirmBooking").addEventListener("click", async function() {
-    if (!isLoggedIn) {
-      showAlert("Please log in to confirm the booking.");
-      return;
-    }
-    
     const date = document.getElementById("bookingDate").value;
     const time = document.getElementById("bookingTime").value;
     const customerName = nameInput.value;
