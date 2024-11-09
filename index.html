@@ -17,9 +17,11 @@
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -62,27 +64,27 @@
       </div>
     </section><!-- /Hero Section -->
   
-    <!-- Booking Modal -->
+<!-- Booking Modal -->
 <section>
-  <div id="bookingModal" class="custom-modal">
+  <div id="bookingModal" class="custom-modal" style="display: none;">
     <div class="custom-modal-dialog">
       <div class="custom-modal-content">
-        
+
         <!-- Modal Header -->
         <div class="custom-modal-header text-center">
           <h5 class="custom-modal-title">Book an Appointment</h5>
           <button type="button" class="close-btn" id="closeModal">&times;</button>
         </div>
-        
+
         <!-- Modal Body -->
         <div class="custom-modal-body">
-          
+
           <!-- Date Selection -->
           <div class="form-group">
             <label for="bookingDate">Select Date</label>
-            <input type="date" id="bookingDate" class="form-control" required>
+            <input type="text" id="bookingDate" class="form-control" placeholder="Click to select date" required>
           </div>
-          
+
           <!-- Time Selection -->
           <div class="form-group">
             <label for="bookingTime">Select Time</label>
@@ -128,22 +130,23 @@
 
           <!-- Note Section -->
           <div class="form-group">
-            <label for="bookingNote">Add a Note</label>
+            <label for="bookingNote">Add a Note <span style="color: gray; font-size:small;"> optional</span></label>
             <textarea id="bookingNote" name="bookingNote" rows="4" class="form-control" placeholder="Extra Services"></textarea>
           </div>
 
         </div>
-        
+
         <!-- Modal Footer -->
         <div class="custom-modal-footer">
           <button id="confirmBooking" class="btn-confirm">Confirm Booking</button>
         </div>
-        
+
       </div>
     </div>
   </div>
 </section>
- <!-- /Booking Modal -->
+<!-- /Booking Modal -->
+
     
     <!-- Custom Alert Box -->
     <div id="customAlert" class="custom-alert" style="display: none;">
@@ -535,11 +538,13 @@
    <!-- Vendor JS Files -->
    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
    <script src="assets/vendor/aos/aos.js"></script>
-   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
  
+
+  <!-- Flatpickr JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <!-- Google Platform Library -->
     <!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->

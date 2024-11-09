@@ -1661,7 +1661,6 @@ section,
 /*--------------------------------------------------------------
 # Bookings Section
 --------------------------------------------------------------*/
-/* Basic styling for the User Bookings section */
 #userBookingsSection {
   max-width: 600px;
   margin: 20px auto;
@@ -1720,7 +1719,9 @@ section,
 
 
 
-
+/*--------------------------------------------------------------
+# Admin Section
+--------------------------------------------------------------*/
 
 
 .modal-title {
@@ -1735,4 +1736,87 @@ section,
 .disabled-slot {
   pointer-events: none;
   opacity: 0.6;
+}
+
+
+/* Container Styling */
+#unavailableDates {
+  max-width: 800px;
+}
+
+/* Header Styling */
+#unavailableDates h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#unavailableDates h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+}
+
+/* Form Styling */
+#unavailableDates .form-group label {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Button Styling */
+#addUnavailableDate {
+  font-size: 1rem;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+  background-color: var(--accent-color);
+}
+
+#addUnavailableDate:hover {
+  background-color: #0056b3;
+}
+
+/* Unavailable Dates List Styling */
+.unavailable-dates-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.unavailable-dates-list .date-item {
+  width: 100%;
+  max-width: 280px;
+  background-color: #f8f9fa;
+  border: 1px solid #e2e6ea;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: #333;
+  transition: transform 0.2s;
+}
+
+.unavailable-dates-list .date-item:hover {
+  transform: scale(1.02);
+}
+
+/* Remove Button Styling */
+.unavailable-dates-list .remove-date {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.unavailable-dates-list .remove-date:hover {
+  background-color: #c82333;
 }
