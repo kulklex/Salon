@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const response = await fetch(`${API_URL}/bookings/admin/get-unavailable-dates`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        console.log("Token: " + token);
         const data = await response.json();
         if (data.success) {
           displayUnavailableDates(data.dates);

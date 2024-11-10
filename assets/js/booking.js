@@ -55,9 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fetch unavailable dates and initialize Flatpickr with them
   async function fetchUnavailableDates() {
     try {
-      const response = await fetch(`${API_URL}/bookings/admin/get-unavailable-dates`, {
-        headers: { "Authorization": `Bearer ${sessionStorage.getItem("token")}` },
-      });
+      const response = await fetch(`${API_URL}/bookings/admin/get-unavailable-dates`);
       const data = await response.json();
       if (data.success) {
         initializeDatePicker(data.dates || []);

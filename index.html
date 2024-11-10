@@ -1,496 +1,820 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>T-Salon</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>T-Salon</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
 
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Flatpickr CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+  </head>
 
-  <!-- Flatpickr CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <body>
+    <header
+      id="header"
+      class="header d-flex align-items-center justify-content-around sticky-top"
+    >
+      <div
+        class="container-fluid position-relative d-flex align-items-center justify-content-around"
+      >
+        <a
+          href="index.html"
+          class="logo d-flex align-items-center me-auto me-xl-0"
+        >
+          <!-- <img src="assets/img" alt=""> -->
+          <h3 class="site-name">T-Salon</h3>
+        </a>
 
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li>
+              <a href="#hero" class="active">Home<br /></a>
+            </li>
+            <li><a href="#featured-services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#footer">Contact</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </header>
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+    <main class="main">
+      <!-- Hero Section -->
+      <section id="hero" class="hero section">
+        <div
+          class="container d-flex flex-column justify-content-center align-items-center text-center position-relative"
+          data-aos="zoom-out"
+        >
+          <!-- <img src="assets/img/black-woman.jpg" class="img-fluid animated" alt=""> -->
+          <h1>Welcome to <span>T-Salon</span></h1>
+          <p class="text-white">
+            Get all types of hair styles done, hair dreams come true here.
+          </p>
+          <div>
+            <button class="btn-get-started" id="openBookingSystem">
+              Book an Appointment
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- /Hero Section -->
 
-</head>
+      <!-- Booking Modal -->
+      <section>
+        <div id="bookingModal" class="custom-modal" style="display: none">
+          <div class="custom-modal-dialog">
+            <div class="custom-modal-content">
+              <!-- Modal Header -->
+              <div class="custom-modal-header text-center">
+                <h5 class="custom-modal-title">Book an Appointment</h5>
+                <button type="button" class="close-btn" id="closeModal">
+                  &times;
+                </button>
+              </div>
 
-<body>
+              <!-- Modal Body -->
+              <div class="custom-modal-body">
+                <!-- Date Selection -->
+                <div class="form-group">
+                  <label for="bookingDate">Select Date</label>
+                  <input
+                    type="text"
+                    id="bookingDate"
+                    class="form-control"
+                    placeholder="Click to select date"
+                    required
+                  />
+                </div>
 
-  <header id="header" class="header d-flex align-items-center justify-content-around sticky-top">
-    <div class="container-fluid position-relative d-flex align-items-center justify-content-around">
+                <!-- Time Selection -->
+                <div class="form-group">
+                  <label for="bookingTime">Select Time</label>
+                  <select id="bookingTime" class="form-control" required>
+                    <option value="">Choose a time slot...</option>
+                    <option value="09:00">09:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="15:00">03:00 PM</option>
+                  </select>
+                  <small id="availabilityStatus" class="form-text mt-2"
+                    >Please select an available time.</small
+                  >
+                </div>
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- <img src="assets/img" alt=""> -->
-        <h3 class="site-name">T-Salon</h3>
-      </a>
+                <!-- Customer Details -->
+                <div class="form-group">
+                  <label for="customerName">Name</label>
+                  <input
+                    type="text"
+                    id="customerName"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="customerEmail">Email</label>
+                  <input
+                    type="email"
+                    id="customerEmail"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="customerPhone">Phone</label>
+                  <input
+                    type="tel"
+                    id="customerPhone"
+                    class="form-control"
+                    required
+                  />
+                </div>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home<br></a></li>
-          <li><a href="#featured-services">Services</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#footer">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-    </div>
-  </header>
+                <!-- Style Selection -->
+                <div class="form-group">
+                  <label for="styleSelect">Choose a Style</label>
+                  <select id="styleSelect" class="form-control" required>
+                    <option value="" disabled selected hidden>
+                      Click to select a style
+                    </option>
+                    <option value="Style 1">Style 1</option>
+                    <option value="Style 2">Style 2</option>
+                    <option value="Style 3">Style 3</option>
+                    <option value="Style 4">Style 4</option>
+                    <option value="Style 5">Style 5</option>
+                    <option value="Style 6">Style 6</option>
+                    <option value="Style 7">Style 7</option>
+                    <option value="Style 8">Style 8</option>
+                    <option value="Style 9">Style 9</option>
+                  </select>
+                </div>
 
-  <main class="main">
+                <!-- Note Section -->
+                <div class="form-group">
+                  <label for="bookingNote"
+                    >Add a note for extra services
+                    </label
+                  >
+                  <textarea
+                    id="bookingNote"
+                    name="bookingNote"
+                    rows="4"
+                    class="form-control"
+                    placeholder="Optional"
+                  ></textarea>
+                </div>
+              </div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
-      <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-        <!-- <img src="assets/img/black-woman.jpg" class="img-fluid animated" alt=""> -->
-        <h1>Welcome to <span>T-Salon</span></h1>
-        <p class="text-white">Get all types of hair styles done, hair dreams come true here.</p>
-        <div>
-          <button class="btn-get-started" id="openBookingSystem">Book an Appointment</button>
+              <!-- Modal Footer -->
+              <div class="custom-modal-footer">
+                <button id="confirmBooking" class="btn-confirm">
+                  Confirm Booking
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Booking Modal -->
+
+      <!-- Custom Alert Box -->
+      <div id="customAlert" class="custom-alert" style="display: none">
+        <div class="alert-content">
+          <span id="alertMessage"></span>
+          <button id="alertCloseBtn" class="btn-close">&times;</button>
         </div>
       </div>
-    </section><!-- /Hero Section -->
-  
-<!-- Booking Modal -->
-<section>
-  <div id="bookingModal" class="custom-modal" style="display: none;">
-    <div class="custom-modal-dialog">
-      <div class="custom-modal-content">
 
-        <!-- Modal Header -->
-        <div class="custom-modal-header text-center">
-          <h5 class="custom-modal-title">Book an Appointment</h5>
-          <button type="button" class="close-btn" id="closeModal">&times;</button>
+      <!-- Featured Services Section -->
+      <section id="featured-services" class="featured-services section">
+        <div class="container">
+          <h1
+            class="d-flex flex-column justify-content-center align-items-center text-center"
+          >
+            Services
+          </h1>
+          <div class="row gy-2">
+            <div
+              class="col-xl-3 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <img
+                    class="bi bi-activity icon"
+                    src="assets/img/silk-press.png"
+                    height="100%"
+                    width="100%"
+                  />
+                </div>
+                <h4><a href="" class="stretched-link">Silk Press</a></h4>
+                <p>
+                  Voluptatum deleniti atque corrupti quos dolores et quas
+                  molestias excepturi
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-xl-3 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <img
+                    class="bi bi-activity icon"
+                    src="assets/img/tight-curls.png"
+                    height="100%"
+                    width="100%"
+                  />
+                </div>
+                <h4><a href="" class="stretched-link">Tight Curls</a></h4>
+                <p>
+                  Voluptatum deleniti atque corrupti quos dolores et quas
+                  molestias excepturi
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-xl-3 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <img
+                    class="bi bi-activity icon"
+                    src="assets/img/loose-curls.png"
+                    height="100%"
+                    width="100%"
+                  />
+                </div>
+                <h4><a href="" class="stretched-link">Loose Curls</a></h4>
+                <p>
+                  Voluptatum deleniti atque corrupti quos dolores et quas
+                  molestias excepturi
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-xl-3 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <img
+                    class="bi bi-activity icon"
+                    src="assets/img/micro-braids.png"
+                    height="100%"
+                    width="100%"
+                  />
+                </div>
+                <h4><a href="" class="stretched-link">Micro Braids</a></h4>
+                <p>
+                  Voluptatum deleniti atque corrupti quos dolores et quas
+                  molestias excepturi
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-xl-3 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <img
+                    class="bi bi-activity icon"
+                    src="assets/img/Goddess-braids.png"
+                    height="100%"
+                    width="100%"
+                  />
+                </div>
+                <h4><a href="" class="stretched-link">Goddess Braids</a></h4>
+                <p>
+                  Voluptatum deleniti atque corrupti quos dolores et quas
+                  molestias excepturi
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-xl-3 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <img
+                    class="bi bi-activity icon"
+                    src="assets/img/Classic-weave.png"
+                    height="100%"
+                    width="100%"
+                  />
+                </div>
+                <h4><a href="" class="stretched-link">Classic Weave</a></h4>
+                <p>
+                  Voluptatum deleniti atque corrupti quos dolores et quas
+                  molestias excepturi
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-xl-3 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <img
+                    class="bi bi-activity icon"
+                    src="assets/img/Style-cut.png"
+                    height="100%"
+                    width="100%"
+                  />
+                </div>
+                <h4><a href="" class="stretched-link">Style Cut</a></h4>
+                <p>
+                  Voluptatum deleniti atque corrupti quos dolores et quas
+                  molestias excepturi
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div
+              class="col-xl-3 col-md-6 d-flex"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="service-item position-relative">
+                <div class="icon">
+                  <img
+                    class="bi bi-activity icon"
+                    src="assets/img/Hair-colours.png"
+                    height="100%"
+                    width="100%"
+                  />
+                </div>
+                <h4><a href="" class="stretched-link">Hair Colours</a></h4>
+                <p>
+                  Voluptatum deleniti atque corrupti quos dolores et quas
+                  molestias excepturi
+                </p>
+              </div>
+            </div>
+            <!-- End Service Item -->
+          </div>
         </div>
+      </section>
+      <!-- /Featured Services Section -->
 
-        <!-- Modal Body -->
-        <div class="custom-modal-body">
-
-          <!-- Date Selection -->
-          <div class="form-group">
-            <label for="bookingDate">Select Date</label>
-            <input type="text" id="bookingDate" class="form-control" placeholder="Click to select date" required>
-          </div>
-
-          <!-- Time Selection -->
-          <div class="form-group">
-            <label for="bookingTime">Select Time</label>
-            <select id="bookingTime" class="form-control" required>
-              <option value="">Choose a time slot...</option>
-              <option value="09:00">09:00 AM</option>
-              <option value="12:00">12:00 PM</option>
-              <option value="15:00">03:00 PM</option>
-            </select>
-            <small id="availabilityStatus" class="form-text mt-2">Please select an available time.</small>
-          </div>
-
-          <!-- Customer Details -->
-          <div class="form-group">
-            <label for="customerName">Name</label>
-            <input type="text" id="customerName" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label for="customerEmail">Email</label>
-            <input type="email" id="customerEmail" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label for="customerPhone">Phone</label>
-            <input type="tel" id="customerPhone" class="form-control" required>
-          </div>
-
-          <!-- Style Selection -->
-          <div class="form-group">
-            <label for="styleSelect">Choose a Style</label>
-            <select id="styleSelect" class="form-control" required>
-              <option value="" disabled selected hidden>Click to select a style</option>
-              <option value="Style 1">Style 1</option>
-              <option value="Style 2">Style 2</option>
-              <option value="Style 3">Style 3</option>
-              <option value="Style 4">Style 4</option>
-              <option value="Style 5">Style 5</option>
-              <option value="Style 6">Style 6</option>
-              <option value="Style 7">Style 7</option>
-              <option value="Style 8">Style 8</option>
-              <option value="Style 9">Style 9</option>
-            </select>
-          </div>
-
-          <!-- Note Section -->
-          <div class="form-group">
-            <label for="bookingNote">Add a Note <span style="color: gray; font-size:small;"> optional</span></label>
-            <textarea id="bookingNote" name="bookingNote" rows="4" class="form-control" placeholder="Extra Services"></textarea>
-          </div>
-
+      <!-- About Section -->
+      <section id="about" class="about section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>About Us</h2>
+          <p>
+            Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
+            consectetur velit
+          </p>
         </div>
+        <!-- End Section Title -->
 
-        <!-- Modal Footer -->
-        <div class="custom-modal-footer">
-          <button id="confirmBooking" class="btn-confirm">Confirm Booking</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /Booking Modal -->
-
-    
-    <!-- Custom Alert Box -->
-    <div id="customAlert" class="custom-alert" style="display: none;">
-      <div class="alert-content">
-        <span id="alertMessage"></span>
-        <button id="alertCloseBtn" class="btn-close">&times;</button>
-      </div>
-    </div>
-    
-
-
-    <!-- Featured Services Section -->
-    <section id="featured-services" class="featured-services section">
-
-      <div class="container">
-        <h1 class="d-flex flex-column justify-content-center align-items-center text-center">Services</h1>
-        <div class="row gy-2">
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon"><img class="bi bi-activity icon" src="assets/img/silk-press.png" height="100%" width="100%"/></div>
-              <h4><a href="" class="stretched-link">Silk Press</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+        <div class="container" data-aos="fade-up">
+          <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-5">
+              <div class="about-img">
+                <img
+                  src="assets/img/about-portrait.jpg"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
             </div>
-          </div><!-- End Service Item -->
 
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon"><img class="bi bi-activity icon" src="assets/img/tight-curls.png" height="100%" width="100%"/></div>
-              <h4><a href="" class="stretched-link">Tight Curls</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+            <div class="col-lg-7">
+              <h3 class="pt-0 pt-lg-5">
+                Neque officiis dolore maiores et exercitationem quae est seda
+                lidera pat claero
+              </h3>
+
+              <!-- Tabs -->
+              <ul class="nav nav-pills mb-3">
+                <li>
+                  <a
+                    class="nav-link active"
+                    data-bs-toggle="pill"
+                    href="#about-tab1"
+                    >Saepe fuga</a
+                  >
+                </li>
+                <li>
+                  <a class="nav-link" data-bs-toggle="pill" href="#about-tab2"
+                    >Voluptates</a
+                  >
+                </li>
+                <li>
+                  <a class="nav-link" data-bs-toggle="pill" href="#about-tab3"
+                    >Corrupti</a
+                  >
+                </li>
+              </ul>
+              <!-- End Tabs -->
+
+              <!-- Tab Content -->
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="about-tab1">
+                  <p class="fst-italic">
+                    Consequuntur inventore voluptates consequatur aut vel et.
+                    Eos doloribus expedita. Sapiente atque consequatur minima
+                    nihil quae aspernatur quo suscipit voluptatem.
+                  </p>
+
+                  <div class="d-flex align-items-center mt-4">
+                    <i class="bi bi-check2"></i>
+                    <h4>
+                      Repudiandae rerum velit modi et officia quasi facilis
+                    </h4>
+                  </div>
+                  <p>
+                    Laborum omnis voluptates voluptas qui sit aliquam
+                    blanditiis. Sapiente minima commodi dolorum non eveniet
+                    magni quaerat nemo et.
+                  </p>
+
+                  <div class="d-flex align-items-center mt-4">
+                    <i class="bi bi-check2"></i>
+                    <h4>Incidunt non veritatis illum ea ut nisi</h4>
+                  </div>
+                  <p>
+                    Non quod totam minus repellendus autem sint velit. Rerum
+                    debitis facere soluta tenetur. Iure molestiae assumenda sunt
+                    qui inventore eligendi voluptates nisi at. Dolorem quo
+                    tempora. Quia et perferendis.
+                  </p>
+
+                  <div class="d-flex align-items-center mt-4">
+                    <i class="bi bi-check2"></i>
+                    <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
+                  </div>
+                  <p>
+                    Eius alias aut cupiditate. Dolor voluptates animi ut
+                    blanditiis quos nam. Magnam officia aut ut alias quo
+                    explicabo ullam esse. Sunt magnam et dolorem eaque magnam
+                    odit enim quaerat. Vero error error voluptatem eum.
+                  </p>
+                </div>
+                <!-- End Tab 1 Content -->
+
+                <div class="tab-pane fade" id="about-tab2">
+                  <p class="fst-italic">
+                    Consequuntur inventore voluptates consequatur aut vel et.
+                    Eos doloribus expedita. Sapiente atque consequatur minima
+                    nihil quae aspernatur quo suscipit voluptatem.
+                  </p>
+
+                  <div class="d-flex align-items-center mt-4">
+                    <i class="bi bi-check2"></i>
+                    <h4>
+                      Repudiandae rerum velit modi et officia quasi facilis
+                    </h4>
+                  </div>
+                  <p>
+                    Laborum omnis voluptates voluptas qui sit aliquam
+                    blanditiis. Sapiente minima commodi dolorum non eveniet
+                    magni quaerat nemo et.
+                  </p>
+
+                  <div class="d-flex align-items-center mt-4">
+                    <i class="bi bi-check2"></i>
+                    <h4>Incidunt non veritatis illum ea ut nisi</h4>
+                  </div>
+                  <p>
+                    Non quod totam minus repellendus autem sint velit. Rerum
+                    debitis facere soluta tenetur. Iure molestiae assumenda sunt
+                    qui inventore eligendi voluptates nisi at. Dolorem quo
+                    tempora. Quia et perferendis.
+                  </p>
+
+                  <div class="d-flex align-items-center mt-4">
+                    <i class="bi bi-check2"></i>
+                    <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
+                  </div>
+                  <p>
+                    Eius alias aut cupiditate. Dolor voluptates animi ut
+                    blanditiis quos nam. Magnam officia aut ut alias quo
+                    explicabo ullam esse. Sunt magnam et dolorem eaque magnam
+                    odit enim quaerat. Vero error error voluptatem eum.
+                  </p>
+                </div>
+                <!-- End Tab 2 Content -->
+
+                <div class="tab-pane fade" id="about-tab3">
+                  <p class="fst-italic">
+                    Consequuntur inventore voluptates consequatur aut vel et.
+                    Eos doloribus expedita. Sapiente atque consequatur minima
+                    nihil quae aspernatur quo suscipit voluptatem.
+                  </p>
+
+                  <div class="d-flex align-items-center mt-4">
+                    <i class="bi bi-check2"></i>
+                    <h4>
+                      Repudiandae rerum velit modi et officia quasi facilis
+                    </h4>
+                  </div>
+                  <p>
+                    Laborum omnis voluptates voluptas qui sit aliquam
+                    blanditiis. Sapiente minima commodi dolorum non eveniet
+                    magni quaerat nemo et.
+                  </p>
+
+                  <div class="d-flex align-items-center mt-4">
+                    <i class="bi bi-check2"></i>
+                    <h4>Incidunt non veritatis illum ea ut nisi</h4>
+                  </div>
+                  <p>
+                    Non quod totam minus repellendus autem sint velit. Rerum
+                    debitis facere soluta tenetur. Iure molestiae assumenda sunt
+                    qui inventore eligendi voluptates nisi at. Dolorem quo
+                    tempora. Quia et perferendis.
+                  </p>
+
+                  <div class="d-flex align-items-center mt-4">
+                    <i class="bi bi-check2"></i>
+                    <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
+                  </div>
+                  <p>
+                    Eius alias aut cupiditate. Dolor voluptates animi ut
+                    blanditiis quos nam. Magnam officia aut ut alias quo
+                    explicabo ullam esse. Sunt magnam et dolorem eaque magnam
+                    odit enim quaerat. Vero error error voluptatem eum.
+                  </p>
+                </div>
+                <!-- End Tab 3 Content -->
+              </div>
             </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon"><img class="bi bi-activity icon" src="assets/img/loose-curls.png" height="100%" width="100%"/></div>
-              <h4><a href="" class="stretched-link">Loose Curls</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon"><img class="bi bi-activity icon" src="assets/img/micro-braids.png" height="100%" width="100%"/></div>
-              <h4><a href="" class="stretched-link">Micro Braids</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon"><img class="bi bi-activity icon" src="assets/img/Goddess-braids.png" height="100%" width="100%"/></div>
-              <h4><a href="" class="stretched-link">Goddess Braids</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon"><img class="bi bi-activity icon" src="assets/img/Classic-weave.png" height="100%" width="100%"/></div>
-              <h4><a href="" class="stretched-link">Classic Weave</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon"><img class="bi bi-activity icon" src="assets/img/Style-cut.png" height="100%" width="100%"/></div>
-              <h4><a href="" class="stretched-link">Style Cut</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item position-relative">
-              <div class="icon"><img class="bi bi-activity icon" src="assets/img/Hair-colours.png" height="100%" width="100%"/></div>
-              <h4><a href="" class="stretched-link">Hair Colours</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Featured Services Section -->
-
-  <!-- About Section -->
-  <section id="about" class="about section">
-
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-      <h2>About Us</h2>
-      <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-    </div><!-- End Section Title -->
-
-    <div class="container" data-aos="fade-up">
-
-      <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
-
-        <div class="col-lg-5">
-          <div class="about-img">
-            <img src="assets/img/about-portrait.jpg" class="img-fluid" alt="">
           </div>
         </div>
+      </section>
+      <!-- /About Section -->
 
-        <div class="col-lg-7">
-          <h3 class="pt-0 pt-lg-5">Neque officiis dolore maiores et exercitationem quae est seda lidera pat claero</h3>
+      <!-- Contact Section -->
+      <section></section>
+      <!-- /Contact Section -->
 
-          <!-- Tabs -->
-          <ul class="nav nav-pills mb-3">
-            <li><a class="nav-link active" data-bs-toggle="pill" href="#about-tab1">Saepe fuga</a></li>
-            <li><a class="nav-link" data-bs-toggle="pill" href="#about-tab2">Voluptates</a></li>
-            <li><a class="nav-link" data-bs-toggle="pill" href="#about-tab3">Corrupti</a></li>
-          </ul><!-- End Tabs -->
-
-          <!-- Tab Content -->
-          <div class="tab-content">
-
-            <div class="tab-pane fade show active" id="about-tab1">
-
-              <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-check2"></i>
-                <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-              </div>
-              <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-check2"></i>
-                <h4>Incidunt non veritatis illum ea ut nisi</h4>
-              </div>
-              <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-check2"></i>
-                <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-              </div>
-              <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
-
-            </div><!-- End Tab 1 Content -->
-
-            <div class="tab-pane fade" id="about-tab2">
-
-              <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-check2"></i>
-                <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-              </div>
-              <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-check2"></i>
-                <h4>Incidunt non veritatis illum ea ut nisi</h4>
-              </div>
-              <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-check2"></i>
-                <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-              </div>
-              <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
-
-            </div><!-- End Tab 2 Content -->
-
-            <div class="tab-pane fade" id="about-tab3">
-
-              <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-check2"></i>
-                <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-              </div>
-              <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-check2"></i>
-                <h4>Incidunt non veritatis illum ea ut nisi</h4>
-              </div>
-              <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-              <div class="d-flex align-items-center mt-4">
-                <i class="bi bi-check2"></i>
-                <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-              </div>
-              <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
-
-            </div><!-- End Tab 3 Content -->
-
-          </div>
-
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="testimonials section dark-background">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Testimonials</h2>
+          <p>
+            Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
+            consectetur velit
+          </p>
         </div>
+        <!-- End Section Title -->
 
-      </div>
+        <img
+          src="assets/img/testimonials-bg.jpg"
+          class="testimonials-bg"
+          alt=""
+        />
 
-    </div>
-
-  </section><!-- /About Section -->
-
- <!-- Contact Section -->
- <section>
-
- </section><!-- /Contact Section -->
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section dark-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
-      <img src="assets/img/testimonials-bg.jpg" class="testimonials-bg" alt="">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper init-swiper">
+            <script type="application/json" class="swiper-config">
+              {
+                "loop": true,
+                "speed": 600,
+                "autoplay": {
+                  "delay": 5000
+                },
+                "slidesPerView": "auto",
+                "pagination": {
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                  "clickable": true
+                }
               }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </script>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="assets/img/testimonials/testimonials-1.jpg"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Saul Goodman</h3>
+                  <h4>Ceo &amp; Founder</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span
+                      >Proin iaculis purus consequat sem cure digni ssim donec
+                      porttitora entum suscipit rhoncus. Accusantium quam,
+                      ultricies eget id, aliquam eget nibh et. Maecen aliquam,
+                      risus at semper.</span
+                    >
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
                 </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
               </div>
-            </div><!-- End testimonial item -->
+              <!-- End testimonial item -->
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="assets/img/testimonials/testimonials-2.jpg"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Sara Wilsson</h3>
+                  <h4>Designer</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span
+                      >Export tempor illum tamen malis malis eram quae irure
+                      esse labore quem cillum quid cillum eram malis quorum
+                      velit fore eram velit sunt aliqua noster fugiat irure amet
+                      legam anim culpa.</span
+                    >
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
                 </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
               </div>
-            </div><!-- End testimonial item -->
+              <!-- End testimonial item -->
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="assets/img/testimonials/testimonials-3.jpg"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Jena Karlis</h3>
+                  <h4>Store Owner</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span
+                      >Enim nisi quem export duis labore cillum quae magna enim
+                      sint quorum nulla quem veniam duis minim tempor labore
+                      quem eram duis noster aute amet eram fore quis sint
+                      minim.</span
+                    >
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
                 </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
               </div>
-            </div><!-- End testimonial item -->
+              <!-- End testimonial item -->
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="assets/img/testimonials/testimonials-4.jpg"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Matt Brandon</h3>
+                  <h4>Freelancer</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span
+                      >Fugiat enim eram quae cillum dolore dolor amet nulla
+                      culpa multos export minim fugiat minim velit minim dolor
+                      enim duis veniam ipsum anim magna sunt elit fore quem
+                      dolore labore illum veniam.</span
+                    >
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
                 </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
               </div>
-            </div><!-- End testimonial item -->
+              <!-- End testimonial item -->
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img
+                    src="assets/img/testimonials/testimonials-5.jpg"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>John Larson</h3>
+                  <h4>Entrepreneur</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i
+                    ><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span
+                      >Quis quorum aliqua sint quem legam fore sunt eram irure
+                      aliqua veniam tempor noster veniam enim culpa labore duis
+                      sunt culpa nulla illum cillum fugiat legam esse veniam
+                      culpa fore nisi cillum quid.</span
+                    >
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
                 </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
               </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Section -->
-
-  </main>
-
-  <footer id="footer" class="footer dark-background">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-4 col-md-6 footer-about">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <span class="sitename">Contact</span>
-            </a>
-            <div class="footer-contact pt-1">
-              <p>A108 Adam Street</p>
-              <p>New York, NY 535022</p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-              <p><strong>Email:</strong> <span>info@example.com</span></p>
+              <!-- End testimonial item -->
             </div>
+            <div class="swiper-pagination"></div>
           </div>
+        </div>
+      </section>
+      <!-- /Testimonials Section -->
+    </main>
 
-          <!-- <div class="col-lg-2 col-md-3 footer-links">
+    <footer id="footer" class="footer dark-background">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-4 col-md-6 footer-about">
+              <a href="index.html" class="logo d-flex align-items-center">
+                <h1 class="sitename">Contact Us</h1>
+              </a>
+              <div class="footer-contact pt-1">
+                <p>A108 Adam Street</p>
+                <p>New York, NY 535022</p>
+                <p class="mt-3">
+                  <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+                </p>
+                <p><strong>Email:</strong> <span>info@example.com</span></p>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-3 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><a href="#">Home</a></li>
@@ -499,55 +823,52 @@
               <li><a href="#">Terms of service</a></li>
               <li><a href="#">Privacy policy</a></li>
             </ul>
-          </div> -->
-
+          </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="copyright text-center">
-      <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
-
-        
-
-        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-          <a href=""><i class="bi bi-twitter-x"></i></a>
-          <a href=""><i class="bi bi-facebook"></i></a>
-          <a href=""><i class="bi bi-instagram"></i></a>
-          <a href=""><i class="bi bi-linkedin"></i></a>
-          <a href=""><i class="bi bi-whatsapp"></i></a>
+      <div class="copyright text-center">
+        <div
+          class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+          <h5 class="d-flex mt-2">Contact us on social networks</h5>
+          <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href=""><i class="bi bi-whatsapp"></i></a>
+          </div>
         </div>
-
       </div>
-    </div>
+    </footer>
 
-  </footer>
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
-  
+    <!-- JS Files -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/booking.js"></script>
 
-  <!-- JS Files -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/booking.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
-
-   <!-- Vendor JS Files -->
-   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   <script src="assets/vendor/aos/aos.js"></script>
-   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
- 
-
-  <!-- Flatpickr JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- Flatpickr JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <!-- Google Platform Library -->
     <!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
-</body>
-
+  </body>
 </html>
