@@ -1,13 +1,48 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const API_URL = "http://localhost:5000/api/v1/bookings/admin"; // Update with the actual API base URL
-    const token = sessionStorage?.getItem("token"); // Assume token is stored in session storage
+    const API_URL = "http://localhost:5000/api/v1"; 
+    const token = sessionStorage.getItem("token"); 
   
+
+    // Function to decode JWT and check if it's expired
+    function isTokenExpired(token) {
+      if (!token) return true; // If no token, it's expired
+
+      // Decode the base64 encoded token part (without signature verification)
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Base64 URL decoding
+      const decodedToken = JSON.parse(window.atob(base64));
+
+      const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
+
+      // Check if the token has expired
+      return decodedToken.exp < currentTime;
+    }
+
+    // Check if the token is expired
+    if (isTokenExpired(token)) {
+      sessionStorage.removeItem('token');
+      document.getElementById("loginButton").style.display = "block";
+     
+      window.location.href = './login.html'; 
+    } else if (token) {
+      // Token is valid, hide login button
+      document.getElementById("loginButton").style.display = "none";
+      
+      // Load unavailable dates if the token is valid
+      loadUnavailableDates();
+    } else {
+      // No token, show the login button
+      document.getElementById("loginButton").style.display = "block";
+    }
+
+
     // Function to load and display unavailable dates from the server
     async function loadUnavailableDates() {
       try {
-        const response = await fetch(`${API_URL}/get-unavailable-dates`, {
+        const response = await fetch(`${API_URL}/bookings/admin/get-unavailable-dates`, {
           headers: { Authorization: `Bearer ${token}` }
         });
+        console.log("Token: " + token);
         const data = await response.json();
         if (data.success) {
           displayUnavailableDates(data.dates);
@@ -18,7 +53,12 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Error loading unavailable dates:", error);
       }
     }
+
+    if(token) {
+      document.getElementById("loginButton").style.display = "none";
+    }
   
+
     // Display unavailable dates in the DOM
     function displayUnavailableDates(dates) {
       const unavailableDatesList = document.getElementById("unavailableDatesList");
@@ -44,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
   
       try {
-        const response = await fetch(`${API_URL}/set-unavailable-dates`, {
+        const response = await fetch(`${API_URL}/bookings/admin/set-unavailable-dates`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -55,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
         if (response.ok) {
           showAlert("Date added to unavailable list.");
-          loadUnavailableDates(); // Refresh list of unavailable dates
+          loadUnavailableDates();
         } else {
           const data = await response.json();
           showAlert(data.message || "Failed to set date as unavailable.");
@@ -95,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   
-    // loadUnavailableDates();  Initial load of unavailable dates
+    loadUnavailableDates();  // Initial load of unavailable dates
 
 
     // Function to show a custom alert message

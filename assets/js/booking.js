@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API_URL = 'http://localhost:5000/api/v1/bookings'; 
+  const API_URL = 'http://localhost:5000/api/v1'; 
 
   // Elements for opening and closing the modal
   const openModalBtn = document.getElementById("openBookingSystem");
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fetch unavailable dates and initialize Flatpickr with them
   async function fetchUnavailableDates() {
     try {
-      const response = await fetch(`${API_URL}/admin/get-unavailable-dates`, {
+      const response = await fetch(`${API_URL}/bookings/admin/get-unavailable-dates`, {
         headers: { "Authorization": `Bearer ${sessionStorage.getItem("token")}` },
       });
       const data = await response.json();
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (date) {
       try {
-        const response = await fetch(`${API_URL}/check-availability`, {
+        const response = await fetch(`${API_URL}/bookings/check-availability`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ date }),
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     try {
-      const response = await fetch(`${API_URL}/create-booking`, {
+      const response = await fetch(`${API_URL}/bookings/create-booking`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

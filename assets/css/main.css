@@ -1768,7 +1768,7 @@ section,
 }
 
 /* Button Styling */
-#addUnavailableDate {
+#addUnavailableDate, #loginButton {
   font-size: 1rem;
   padding: 8px;
   transition: background-color 0.3s ease;
@@ -1819,4 +1819,168 @@ section,
 
 .unavailable-dates-list .remove-date:hover {
   background-color: #c82333;
+}
+
+
+/* Register Page & Login Page Styling */
+#form-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#register-form-container, #login-form-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  display: inline-block;
+  margin: 20px;
+}
+
+#register-card, #login-card {
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 40px 20px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+#register-card h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+#register-card .form-group {
+  margin: 15px;
+  position: relative;
+}
+
+#register-card .form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+  position: absolute;
+  top: -14px;
+  left: 10px;
+  background-color: #fff;
+  padding: 0 5px;
+}
+
+#register-card .form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+#register-card .form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+#register-card .form-group input::placeholder {
+  color: #bbb;
+}
+
+#register-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#register-button:hover {
+  background-color: #0056b3;
+}
+
+#register-form-container a {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  text-align: center;
+}
+
+#register-form-container a:hover {
+  text-decoration: underline;
+}
+
+#login-card h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+#login-card .form-group {
+  margin: 15px;
+  position: relative;
+}
+
+#login-card .form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+  position: absolute;
+  top: -14px;
+  left: 10px;
+  background-color: #fff;
+  padding: 0 5px;
+}
+
+#login-card .form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+#login-card .form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+#login-card .form-group input::placeholder {
+  color: #bbb;
+}
+
+#login-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#login-button:hover {
+  background-color: #0056b3;
+}
+
+#login-form-container a {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  text-align: center;
+}
+
+#login-form-container a:hover {
+  text-decoration: underline;
 }
