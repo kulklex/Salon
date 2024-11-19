@@ -36,21 +36,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+
   // Initialize Flatpickr on the date input
-  function initializeDatePicker(unavailableDates = []) {
-    flatpickr(bookingDateInput, {
-      enableTime: false, // No time selection
-      dateFormat: "Y-m-d",
-      minDate: "today", // Start from today
-      disable: unavailableDates, // Array of unavailable dates
-      onChange: function (selectedDates, dateStr, instance) {
-        if (unavailableDates.includes(dateStr)) {
-          showAlert("This date is unavailable for booking.");
-          instance.clear(); // Clear the selected date if unavailable
-        }
+function initializeDatePicker(unavailableDates = []) {
+  flatpickr(bookingDateInput, {
+    enableTime: false, // No time selection
+    dateFormat: "Y-m-d",
+    minDate: "today", // Start from today
+    disable: [
+      ...unavailableDates, // Disable unavailable dates
+      function (date) {
+        // Disable Thursdays (4), Fridays (5), and Saturdays (6)
+        const day = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+        return day === 4 || day === 5 || day === 6;
       },
-    });
-  }
+    ],
+    onChange: function (selectedDates, dateStr, instance) {
+      if (unavailableDates.includes(dateStr)) {
+        showAlert("This date is unavailable for booking.");
+        instance.clear(); // Clear the selected date if unavailable
+      }
+    },
+  });
+}
+
 
   // Fetch unavailable dates and initialize Flatpickr with them
   async function fetchUnavailableDates() {
@@ -82,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("#bookingTime option").forEach((option) => {
       option.classList.remove("disabled-slot", "slot-unavailable", "slot-available");
       option.disabled = false;
-      option.textContent = option.value ? `${option.value} AM/PM` : "Choose a time slot...";
+      option.textContent = option.value ? `${option.value}` : "Choose a time slot...";
     });
   }
 
@@ -119,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (option.value) {
         if (unavailableTimes.includes(option.value)) {
           option.classList.add("disabled-slot", "slot-unavailable");
-          option.textContent = `${option.value} AM/PM (Unavailable)`;
+          option.textContent = `${option.value} (Unavailable)`;
           option.disabled = true;
         } else {
           option.classList.add("slot-available");

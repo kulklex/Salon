@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const dateToRemove = event.target.getAttribute("data-date");
   
         try {
-          const response = await fetch(`${API_URL}/remove-unavailable-date`, {
+          const response = await fetch(`${API_URL}/bookings/admin/remove-unavailable-date`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
