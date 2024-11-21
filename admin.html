@@ -35,83 +35,109 @@
     <link href="assets/css/main.css" rel="stylesheet" />
   </head>
   <body>
-    
-  <header id="header" class="header d-flex align-items-center justify-content-around sticky-top">
-    <div class="container-fluid position-relative d-flex align-items-center justify-content-around">
+    <header
+      id="header"
+      class="header d-flex align-items-center justify-content-around sticky-top"
+    >
+      <div
+        class="container-fluid position-relative d-flex align-items-center justify-content-around"
+      >
+        <a
+          href="./index.html"
+          class="logo d-flex align-items-center me-auto me-xl-0"
+        >
+          <!-- <img src="assets/img" alt=""> -->
+          <h3 class="site-name">Tifehairhaven</h3>
+        </a>
 
-      <a href="./index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- <img src="assets/img" alt=""> -->
-        <h3 class="site-name">Tifehairhaven</h3>
-      </a>
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li>
+              <a href="./index.html#hero">Home<br /></a>
+            </li>
+            <li><a href="./index.html#featured-services">Services</a></li>
+            <li><a href="./index.html#about">About</a></li>
+            <li><a href="./index.html#footer">Contact</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="./index.html#hero">Home<br></a></li>
-          <li><a href="./index.html#featured-services">Services</a></li>
-          <li><a href="./index.html#about">About</a></li>
-          <li><a href="./index.html#footer">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <div>
-        <a class="btn m-4" href="./login.html" id="loginButton">Login</a>
-      </div>
-    </div>
-  </header>
-
-    <section id="unavailableDates" class="container mt-5 p-4 shadow bg-light rounded">
-        <h1>Admin Dashboard</h1>
-        <h2 class="text-center mb-4"></h2>
-      
-        <!-- Date Picker and Button to Add Unavailable Date -->
-        <div class="form-group row align-items-center">
-          <label for="unavailableDate" class="col-sm-4 col-form-label font-weight-bold">Select Date to Make Unavailable:</label>
-          <div class="col-sm-5">
-            <input type="date" id="unavailableDate" class="form-control" />
-          </div>
-          <div class="col-sm-3">
-            <button id="addUnavailableDate" class="btn w-100">Add Unavailable Date</button>
-          </div>
-        </div>
-      
-        <div class="row justify-content-between">
-           <!-- Display List of Unavailable Dates -->
-      <div id="userBookingsSection" class="col-md-6 col-sm-12">        
-        <h2>Unavailable Dates</h2>
-        <div id="unavailableDatesList" class="unavailable-dates-list mt-3">
-          <!-- Unavailable dates will be dynamically inserted here -->
+        <div>
+          <a class="btn m-4" href="./login.html" id="loginButton">Login</a>
         </div>
       </div>
+    </header>
 
-          <!-- Display All Bookings -->
-          <div id="userBookingsSection" class="col-md-6 col-sm-12">
-            <h2>Your Bookings</h2>
-            <div id="bookingsContainer">
-              <!-- Booking entries will be dynamically injected here -->
-            </div>
-            <h1 id="noBookingsMessage" style="display: none">No bookings found</h1>
+    <section
+      id="unavailableDates"
+      class="container mt-5 p-4 shadow bg-light rounded"
+    >
+      <h1>Admin Dashboard</h1>
+      <h2 class="text-center mb-4"></h2>
+
+      <!-- Date Picker and Button to Add Unavailable Date -->
+      <div class="form-group row align-items-center">
+        <label
+          for="unavailableDate"
+          class="col-sm-4 col-form-label font-weight-bold"
+          >Select Date to Make Unavailable:</label
+        >
+        <div class="col-sm-5">
+          <input type="date" id="unavailableDate" class="form-control" />
+        </div>
+        <div class="col-sm-3">
+          <button id="addUnavailableDate" class="btn w-100">
+            Add Unavailable Date
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Display List of Unavailable Dates -->
+        <div id="userBookingsSection" class="col-md-6 col-sm-12">
+          <h2>Unavailable Dates</h2>
+          <div id="unavailableDatesList" class="unavailable-dates-list mt-3">
+            <!-- Unavailable dates will be dynamically inserted here -->
           </div>
         </div>
 
-       
+        <!-- Display All Bookings -->
+        <div id="userBookingsSection" class="col-md-6 col-sm-12">
+          <h2>Your Bookings</h2>
+          <div id="bookingsContainer">
+            <!-- Booking entries will be dynamically injected here -->
+          </div>
+          <h1 id="noBookingsMessage" style="display: none">
+            No bookings found
+          </h1>
+        </div>
+      </div>
+    </section>
+
+     <!-- Scroll Top -->
+     <a
+     href="#"
+     id="scroll-top"
+     class="scroll-top d-flex align-items-center justify-content-center"
+     ><i class="bi bi-arrow-up-short"></i
+   ></a>
+
+   <!-- Preloader -->
+   <div id="preloader"></div>
 
 
-    
-      </section>
-      
+   <script src="assets/js/main.js"></script>
+   <script src="assets/js/admin.js"></script>
+   <script src="assets/js/fetchBookings.js"></script>
 
-   
-    
+  <!-- Flatpickr JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/js/admin.js"></script>
-    <script src="assets/js/fetchBookings.js"></script>
-
-   
   </body>
 </html>
