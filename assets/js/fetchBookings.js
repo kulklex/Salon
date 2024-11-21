@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     const bookingsContainer = document.getElementById("bookingsContainer");
     const noBookingsMessage = document.getElementById("noBookingsMessage");
+
+    const API_URL = 'http://localhost:5000/api/v1'; 
   
     // Function to show a custom alert
     function showAlert(message) {
@@ -26,9 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fetch user bookings from the backend
     async function fetchUserBookings() {
       try {
-        const response = await fetch("http://localhost:5000/api/v1/auth/user-bookings", {
-          headers: { "Authorization": `Bearer ${token}` }
-        });
+        const response = await fetch(`${API_URL}/auth/user-bookings`)
   
         if (!response.ok) {
           const errorData = await response.json();
@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
   
         const data = await response.json();
-        console.log("Fetched bookings data:", data);
   
         if (data.success && data.bookings.length > 0) {
           displayBookings(data.bookings);
@@ -88,7 +87,7 @@ async function deleteBooking(bookingId) {
     const token = sessionStorage.getItem("token");
   
     try {
-      const response = await fetch(`http://localhost:5000/api/v1/bookings/delete-booking/${bookingId}`, {
+      const response = await fetch(`${API_URL}/bookings/delete-booking/${bookingId}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`

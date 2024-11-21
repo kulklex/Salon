@@ -75,11 +75,29 @@
           </div>
         </div>
       
-        <!-- Display List of Unavailable Dates -->
-        <h3 class="text-secondary mt-5">Unavailable Dates</h3>
+        <div class="row justify-content-between">
+           <!-- Display List of Unavailable Dates -->
+      <div id="userBookingsSection" class="col-md-6 col-sm-12">        
+        <h2>Unavailable Dates</h2>
         <div id="unavailableDatesList" class="unavailable-dates-list mt-3">
           <!-- Unavailable dates will be dynamically inserted here -->
         </div>
+      </div>
+
+          <!-- Display All Bookings -->
+          <div id="userBookingsSection" class="col-md-6 col-sm-12">
+            <h2>Your Bookings</h2>
+            <div id="bookingsContainer">
+              <!-- Booking entries will be dynamically injected here -->
+            </div>
+            <h1 id="noBookingsMessage" style="display: none">No bookings found</h1>
+          </div>
+        </div>
+
+       
+
+
+    
       </section>
       
 
@@ -92,6 +110,7 @@
     <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/js/admin.js"></script>
+    <script src="assets/js/fetchBookings.js"></script>
 
    
   </body>

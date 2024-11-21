@@ -1662,7 +1662,7 @@ section,
 # Bookings Section
 --------------------------------------------------------------*/
 #userBookingsSection {
-  max-width: 600px;
+  max-width: 500px;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
@@ -1703,7 +1703,6 @@ section,
   background-color: #c9302c;
 }
 
-/* Styling for "No bookings found" message */
 #noBookingsMessage {
   text-align: center;
   font-weight: bold;
@@ -1759,7 +1758,7 @@ section,
 
 /* Container Styling */
 #unavailableDates {
-  max-width: 800px;
+  max-width: 1200px;
 }
 
 /* Header Styling */
@@ -1800,6 +1799,7 @@ section,
 /* Unavailable Dates List Styling */
 .unavailable-dates-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
 }
