@@ -266,7 +266,6 @@ a:hover {
 
 h1,
 h2,
-h3,
 h4,
 h5,
 h6 {
@@ -1060,6 +1059,7 @@ section,
     text-align: center;
     font-size: 17px;
     padding-top: 7px;
+    color: var(--accent-color);
   }
 }
 
@@ -1086,6 +1086,7 @@ section,
     align-items: center;
     text-align: center;
     font-size: 17px;
+    color: var(--accent-color);
     padding-top: 7px;
   }
 }
