@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const openModalBtn = document.getElementById("openBookingSystem");
   const bookingModal = document.getElementById("bookingModal");
   const bookingDateInput = document.getElementById("bookingDate");
-  const closeModalBtn = document.getElementById("closeModal") || bookingModal.querySelector(".close-btn");
+  const closeModalBtn = document.getElementById("closeModal")
+  
+  const removePastUnavailableDatesBtn = document.getElementById("removePastDates");
 
   // Function to show the modal
   function showModal() {
@@ -182,4 +184,28 @@ function initializeDatePicker(unavailableDates = []) {
     document.body.appendChild(alertBox);
     setTimeout(() => alertBox.remove(), 3000);
   }
+
+    // Function to fetch and remove past unavailable dates
+    async function removePastUnavailableDates() {
+      try {
+        const response = await fetch(`${API_URL}/bookings/admin/remove-past-unavailable-dates`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+  
+        const data = await response.json();
+        if (data.success) {
+          showAlert("Past unavailable dates removed successfully.");
+          fetchUnavailableDates(); // Refresh the unavailable dates list
+        } else {
+          showAlert(data.message || "Failed to remove past unavailable dates.");
+        }
+      } catch (error) {
+        console.error("Error removing past unavailable dates:", error);
+        showAlert("Error removing past unavailable dates. Please try again.");
+      }
+    }
+  
+    // Attach event listener to the "Remove Past Unavailable Dates" button
+    // removePastUnavailableDatesBtn.addEventListener("click", removePastUnavailableDates);
 });

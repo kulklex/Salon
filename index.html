@@ -44,11 +44,8 @@
       <div
         class="container-fluid position-relative d-flex align-items-center justify-content-around"
       >
-        <a
-          href="index.html"
-          class="logo d-flex align-items-center me-auto me-xl-0"
-        >
-          <!-- <img src="assets/img" alt=""> -->
+        <a href="index.html">
+          <!-- <img src="assets/img"  alt="Tifehairhaven Logo"> -->
           <h3 class="site-name">Tifehairhaven</h3>
         </a>
 
@@ -60,9 +57,24 @@
             <li><a href="#about">About</a></li>
             <li><a href="#featured-services">Services</a></li>
             <li><a href="#footer">Contact</a></li>
+            <li class="mobile-social-links m-4">
+              <a class="mx-1" target="_blank" href="https://www.instagram.com/tifehairhaven?igsh=MXR0bXkzM3duNGMxeg=="><i class="bi bi-instagram"></i></a>
+              <a class="mx-1" target="_blank" href="https://www.tiktok.com/@tifehairhaven?_t=8rd0bqeKCx6&_r=1"><i class="bi bi-tiktok"></i></a>
+              <a class="mx-1" target="_blank" href="https://wa.link/j9z0ah"><i class="bi bi-whatsapp"></i></a>
+              <a class="mx-1" target="_blank" href="https://snapchat.com/t/NG4MTmxr"><i class="bi bi-snapchat"></i></a>
+            </li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
+
+        
+          
+        <div class="social-links m-4">
+          <a class="mx-1" target="_blank" href="https://www.instagram.com/tifehairhaven?igsh=MXR0bXkzM3duNGMxeg=="><i class="bi bi-instagram"></i></a>
+          <a class="mx-1" target="_blank" href="https://www.tiktok.com/@tifehairhaven?_t=8rd0bqeKCx6&_r=1"><i class="bi bi-tiktok"></i></a>
+          <a class="mx-1" target="_blank" href="https://wa.link/j9z0ah"><i class="bi bi-whatsapp"></i></a>
+          <a class="mx-1" target="_blank" href="https://snapchat.com/t/NG4MTmxr"><i class="bi bi-snapchat"></i></a>
+        </div>
       </div>
     </header>
 
@@ -74,15 +86,16 @@
           data-aos="zoom-out"
         >
           <!-- <img src="assets/img/black-woman.jpg" class="img-fluid animated" alt=""> -->
-          <h1>Welcome to <span>Tifehairhaven</span></h1>
-          <p class="text-white">
-            Get all types of hair styles done, hair dreams come true here.
+          <h1>Tifehairhaven</h1>
+          <p class="salon-info text-center text-white">
+            Home-based Salon.  We care about your hair 🖤
           </p>
           <div>
             <button class="btn-get-started" id="openBookingSystem">
               Book an Appointment
             </button>
           </div>
+          
         </div>
       </section>
       <!-- /Hero Section -->
@@ -176,7 +189,9 @@
                     <option value="Faux Locs">Faux Locs</option>
                     <option value="Dread retwist">Dread retwist</option>
                     <option value="Silk Press">Silk Press</option>
-                    <option value="Deep Conditioning / Hydration Treatment">Deep Conditioning / Hydration Treatment</option>
+                    <option value="Deep Conditioning / Hydration Treatment">
+                      Deep Conditioning / Hydration Treatment
+                    </option>
                     <option value="Scalp Treatment">Scalp Treatment</option>
                     <option value="Cornrows">Cornrows</option>
                     <option value="Stitch cornrows">Stitch cornrows</option>
@@ -189,8 +204,7 @@
                 <div class="form-group">
                   <label for="bookingNote"
                     >Add a note for extra services
-                    </label
-                  >
+                  </label>
                   <textarea
                     id="bookingNote"
                     name="bookingNote"
@@ -221,14 +235,14 @@
         </div>
       </div>
 
-
       <!-- About Section -->
       <section id="about" class="about section">
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
           <h2>About Us</h2>
           <p>
-            Your destination for exceptional natural hair care, braiding, and more.
+            Your destination for exceptional natural hair care, braiding, and
+            more.
           </p>
         </div>
         <!-- End Section Title -->
@@ -276,92 +290,189 @@
               <!-- Tab Content -->
               <div class="tab-content">
                 <div class="tab-pane fade show active" id="about-tab1">
-
                   <div class="mt-4">
-                    <h5>
-                      Braiding Classic, modern, or intricate braiding styles including box braids, cornrows, feed-in braids, knotless braids, and more.
-                    </h5>
-                    <h5>Twists & Locs Passion twists, two-strand twists, faux locs, loc maintenance, and starter locs, all customized to bring out the best in your natural texture. 
-                    </h5>
-                    <h5>Protective Styles Protective styling options designed to keep your hair healthy and manageable, from updos to twist-outs and beyond. 
-                    </h5>
-                    <h5>Natural Hair Styling Services for wash-and-go’s, twist-outs, braid-outs, and more, tailored to enhance the beauty of your curls, coils, and waves. 
-                    </h5>
-                    <h5>Silk Press A smoothing service for natural hair, achieving a sleek, shiny finish while maintaining the health of your curls. 
-                    </h5>
-                    <h5>Custom Treatments Deep conditioning, scalp treatments, and hydration treatments to support strong, healthy hair from root to tip.
-                    </h5>
-                    <h5>
-                      Every service at Tifehairhaven is designed with your hair health in mind, using high-quality, natural hair-friendly products. Whether you’re here for a protective style, a fresh cut, or a complete transformation, we’re committed to helping you love every step of your hair journey. Book your appointment today and experience the comfort and expertise of Tifehairhaven.
-                    </h5>
+                    <p>
+                      Here’s a list of the styles along with approximate
+                      timeframes for each service. Times can vary depending on
+                      hair length, density, and specific styling details, so
+                      we’ll give you a range to help with planning.
+                    </p>
+
+                    <!-- Braiding Styles Table -->
+                    <h2 class="mt-2">Braiding Styles</h2>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Style</th>
+                          <th>Time</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Box Braids</td>
+                          <td>3–5 hours</td>
+                          <td>
+                            Traditional braids that can be big, medium, or small
+                            in size.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Knotless Braids</td>
+                          <td>3–5 hours</td>
+                          <td>
+                            A lighter, more natural variation of box braids with
+                            less tension on the scalp.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Feed-in Cornrows</td>
+                          <td>1–4 hours</td>
+                          <td>
+                            Braids that start small and get fuller for a sleek,
+                            natural look.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Goddess Braids</td>
+                          <td>2–5 hours</td>
+                          <td>
+                            Large, thick braids styled as intricate updos or
+                            flowing styles with wavy ends.
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- Twists & Locs Table -->
+                    <h2 class="mt-2">Twists & Locs</h2>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Style</th>
+                          <th>Time</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Two-Strand Twists</td>
+                          <td>2–5 hours</td>
+                          <td>
+                            Simple and elegant style for natural hair, keeping
+                            curls defined and protected.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Passion Twists</td>
+                          <td>4–7 hours</td>
+                          <td>
+                            Loose, carefree twist style with a boho feel and
+                            lightweight texture.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Faux Locs</td>
+                          <td>4–6 hours</td>
+                          <td>
+                            A style mimicking natural locs, offering a
+                            protective look without the commitment.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Dread Retwist</td>
+                          <td>1–3 hours</td>
+                          <td>
+                            Regular maintenance for existing locs, including
+                            retwisting and hydration.
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <!-- Other Categories Table -->
+                    <h2 class="mt-2">Other Services</h2>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Service</th>
+                          <th>Time</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Wash and Go</td>
+                          <td>1–2 hours</td>
+                          <td>
+                            Simple styling for natural curls, defining and
+                            enhancing curls after washing.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Silk Press</td>
+                          <td>2–4 hours</td>
+                          <td>
+                            Smoothing service for natural hair, using heat to
+                            achieve a sleek, straight style.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Deep Conditioning</td>
+                          <td>30 min–1 hour</td>
+                          <td>
+                            A nourishing treatment to hydrate and strengthen
+                            hair.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Scalp Treatment</td>
+                          <td>30 min–1 hour</td>
+                          <td>
+                            Cleansing and soothing treatments for scalp health.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Cornrows</td>
+                          <td>1–2 hours</td>
+                          <td>Classic and modern cornrow styles.</td>
+                        </tr>
+                        <tr>
+                          <td>Stitch Cornrows</td>
+                          <td>2–3 hours</td>
+                          <td>Stylish and intricate stitch cornrow designs.</td>
+                        </tr>
+                        <tr>
+                          <td>Plug Twist</td>
+                          <td>2–4 hours</td>
+                          <td>
+                            Defined twist styles tailored to your preferences.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Barrel Twist</td>
+                          <td>2–3 hours</td>
+                          <td>Sleek and sculpted barrel twists.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <p class="mt-4">
+                      Every service at <strong>Tifehairhaven</strong> is
+                      designed with your hair health in mind. Whether you’re
+                      here for a protective style, a fresh cut, or a complete
+                      transformation, we’re committed to helping you love every
+                      step of your hair journey. Book your appointment today and
+                      experience the comfort and expertise of Tifehairhaven.
+                    </p>
                   </div>
                 </div>
-                <!-- End Tab 1 Content -->
-
-                <div class="tab-pane fade" id="about-tab2">
-                  <h5 class=" mt-4">
-                    We specialize in celebrating and enhancing the beauty of natural textures, offering a full range of services including protective styling, intricate braids, loc maintenance, twist-outs, silk presses, and custom treatments. Our team of skilled stylists is passionate about creating looks that honor the unique beauty of every curl, coil, and wave. 
-                  </h5>
-                  <h5 class=" mt-4">
-                    At Tifehairhaven, we believe in the power of self-expression and self-care. We’re committed to offering a warm, inclusive environment where each client feels seen, celebrated, and catered to. Our stylists stay up-to-date on the latest techniques and trends in natural hair care, combining skill with artistry to bring your hair goals to life while keeping your hair healthy and vibrant. Whether you’re here for a protective style, or just some well-deserved self-care, we’re here to make your experience enjoyable and inspiring. From custom braiding to natural hair treatments tailored just for you, Tifehairhaven is here to celebrate the beauty of your natural hair journey.
-                  </h5>
-                </div>
-                <!-- End Tab 2 Content -->
- 
-                <div class="tab-pane fade" id="about-tab3">
-
-                  <div class="d-flex align-items-center mt-4">
-                    <i class="bi bi-check2"></i>
-                    <h4>
-                      Natural Hair Expertise
-                    </h4>
-                  </div>
-                  <p>
-                    We specialize in braids, twists, locs, and natural hair styling tailored to your texture.
-                  </p>
-
-                  
-                  <div class="d-flex align-items-center mt-4">
-                    <i class="bi bi-check2"></i>
-                    <h4>
-                      Personalized Care 
-                    </h4>
-                  </div>
-                  <p>
-                    Every service is customized to fit your unique hair needs and goals.
-                  </p>
-
-
-                  <div class="d-flex align-items-center mt-4">
-                    <i class="bi bi-check2"></i>
-                    <h4>
-                      High-Quality Products
-                    </h4>
-                  </div>
-                  <p>
-                    We use premium, natural hair-friendly products to keep your hair strong, hydrated, and healthy.
-                  </p>
-                  
-
-                  <div class="d-flex align-items-center mt-4">
-                    <i class="bi bi-check2"></i>
-                    <h4>
-                      Inviting Atmosphere
-                    </h4>
-                  </div>
-                  <p>
-                    Our salon is a space where you can relax, feel empowered, and enjoy a sense of community.
-                  </p>
-                </div>
-                <!-- End Tab 3 Content -->
               </div>
             </div>
           </div>
         </div>
       </section>
       <!-- /About Section -->
-
-
 
       <!-- Featured Services Section -->
       <section id="featured-services" class="featured-services section">
@@ -382,7 +493,7 @@
                   />
                 </div>
                 <h4 class="stretched-link">Barrel Twist</h4>
-                         </div>
+              </div>
             </div>
             <!-- End Service Item -->
 
@@ -523,24 +634,44 @@
       </section>
       <!-- /Featured Services Section -->
 
-  
       <!-- Carousel Section -->
       <section>
         <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
           <!-- Indicators -->
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button
+              type="button"
+              data-bs-target="#cardCarousel"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#cardCarousel"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#cardCarousel"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
           </div>
-        
+
           <!-- Carousel Items -->
           <div class="carousel-inner container-fluid">
             <div class="carousel-item active">
               <div class="row justify-content-center">
                 <div class="col-md-4">
                   <div class="card">
-                    <img src="assets/img/Boho-braids3.jpg" class="card-img-top" alt="Card Image 1">
+                    <img
+                      src="assets/img/Boho-braids3.jpg"
+                      class="card-img-top"
+                      alt="Card Image 1"
+                    />
                     <div class="card-body">
                       <h4 class="card-title">Boho Braids</h4>
                     </div>
@@ -548,7 +679,11 @@
                 </div>
                 <div class="col-md-4">
                   <div class="card">
-                    <img src="assets/img/French-curls.jpg" class="card-img-top" alt="Card Image 2">
+                    <img
+                      src="assets/img/French-curls.jpg"
+                      class="card-img-top"
+                      alt="Card Image 2"
+                    />
                     <div class="card-body">
                       <h4 class="card-title">French Curls</h4>
                     </div>
@@ -556,7 +691,11 @@
                 </div>
                 <div class="col-md-4">
                   <div class="card">
-                    <img src="assets/img/Boho-locs(1).jpg" class="card-img-top" alt="Card Image 3">
+                    <img
+                      src="assets/img/Boho-locs(1).jpg"
+                      class="card-img-top"
+                      alt="Card Image 3"
+                    />
                     <div class="card-body">
                       <h4 class="card-title">Boho Locs</h4>
                     </div>
@@ -564,12 +703,16 @@
                 </div>
               </div>
             </div>
-        
+
             <div class="carousel-item m-2">
               <div class="row justify-content-center">
                 <div class="col-md-4">
                   <div class="card">
-                    <img src="assets/img/Knotlessbraids2.jpg" class="card-img-top" alt="Card Image 1">
+                    <img
+                      src="assets/img/Knotlessbraids2.jpg"
+                      class="card-img-top"
+                      alt="Card Image 1"
+                    />
                     <div class="card-body">
                       <h4 class="card-title">Knotless Braids</h4>
                     </div>
@@ -577,7 +720,11 @@
                 </div>
                 <div class="col-md-4">
                   <div class="card">
-                    <img src="assets/img/Goddess-braids.jpg" class="card-img-top" alt="Card Image 1">
+                    <img
+                      src="assets/img/Goddess-braids.jpg"
+                      class="card-img-top"
+                      alt="Card Image 1"
+                    />
                     <div class="card-body">
                       <h4 class="card-title">Goddess Braids</h4>
                     </div>
@@ -585,7 +732,11 @@
                 </div>
                 <div class="col-md-4">
                   <div class="card">
-                    <img src="assets/img/Knotless-braids.jpg" class="card-img-top" alt="Card Image 1">
+                    <img
+                      src="assets/img/Knotless-braids.jpg"
+                      class="card-img-top"
+                      alt="Card Image 1"
+                    />
                     <div class="card-body">
                       <h4 class="card-title">Knotless Braids</h4>
                     </div>
@@ -598,46 +749,64 @@
               <div class="row justify-content-center">
                 <div class="col-md-4">
                   <div class="card">
-                    <img src="assets/img/Boho-braids4.jpg" class="card-img-top" alt="Card Image 1">
+                    <img
+                      src="assets/img/Boho-braids4.jpg"
+                      class="card-img-top"
+                      alt="Card Image 1"
+                    />
                     <div class="card-body">
                       <h4 class="card-title">Boho Braids</h4>
-                      
                     </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="card">
-                    <img src="assets/img/Boho-locs2.jpg" class="card-img-top" alt="Card Image 1">
+                    <img
+                      src="assets/img/Boho-locs2.jpg"
+                      class="card-img-top"
+                      alt="Card Image 1"
+                    />
                     <div class="card-body">
                       <h4 class="card-title">Boho locs</h4>
-                      
                     </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="card">
-                    <img src="assets/img/Boho-braids.jpg" class="card-img-top" alt="Card Image 1">
+                    <img
+                      src="assets/img/Boho-braids.jpg"
+                      class="card-img-top"
+                      alt="Card Image 1"
+                    />
                     <div class="card-body">
                       <h4 class="card-title">Boho Braids</h4>
-                      
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        
+
           <!-- Controls -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#cardCarousel"
+            data-bs-slide="prev"
+          >
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#cardCarousel"
+            data-bs-slide="next"
+          >
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-        
       </section>
       <!-- /Contact Section -->
 
@@ -646,9 +815,7 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
           <h2>Testimonials</h2>
-          <p>
-            Here's what our customers are saying about us
-          </p>
+          <p>Here's what our customers are saying about us</p>
         </div>
         <!-- End Section Title -->
 
@@ -694,7 +861,10 @@
                   <p>
                     <i class="bi bi-quote quote-icon-left"></i>
                     <span>
-                      The service here is excellent and reasonable price. I fall in love with my braids everytime I wake up. The braids comes out very neat and lovely. I’ll definitely be coming back
+                      The service here is excellent and reasonable price. I fall
+                      in love with my braids everytime I wake up. The braids
+                      comes out very neat and lovely. I’ll definitely be coming
+                      back
                     </span>
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
@@ -720,7 +890,8 @@
                   <p>
                     <i class="bi bi-quote quote-icon-left"></i>
                     <span>
-                      Very customer friendly, fast service and very good ambience
+                      Very customer friendly, fast service and very good
+                      ambience
                     </span>
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
@@ -731,7 +902,7 @@
               <div class="swiper-slide">
                 <div class="testimonial-item">
                   <img
-                    src="assets/img/testimonials/Bella.jpg"
+                    src="assets/img/testimonials/Default.jpg"
                     class="testimonial-img"
                     alt=""
                   />
@@ -746,7 +917,10 @@
                   <p>
                     <i class="bi bi-quote quote-icon-left"></i>
                     <span>
-                      I’m absolutely thrilled with my braids! She worked so quickly, and my hair looks amazing, neat,, and perfectly braided. I really appreciate how efficient and skilled she was. Highly recommend!
+                      I’m absolutely thrilled with my braids! She worked so
+                      quickly, and my hair looks amazing, neat,, and perfectly
+                      braided. I really appreciate how efficient and skilled she
+                      was. Highly recommend!
                     </span>
                     <i class="bi bi-quote quote-icon-right"></i>
                   </p>
@@ -770,39 +944,39 @@
                 <h1 class="sitename">Contact Us</h1>
               </a>
               <div class="footer-contact pt-1">
-                <p>A108 Adam Street</p>
-                <p>New York, NY 535022</p>
+                <!-- <p>A108 Adam Street</p> -->
+                <!-- <p>New York, NY 535022</p> -->
                 <p class="mt-3">
-                  <strong>Phone:</strong> <span>+1 5589 55488 55</span>
+                  <strong>Phone:</strong> <span>+44 7878906004</span>
                 </p>
-                <p><strong>Email:</strong> <span>info@example.com</span></p>
+                <p><strong>Email:</strong> <span>Tifehairhaven@gmail.com</span></p>
               </div>
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#about">About us</a></li>
-              <li><a href="#featured-services">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
+              <h4>Useful Links</h4>
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About us</a></li>
+                <li><a href="#featured-services">Services</a></li>
+                <li><a href="#">Terms of service</a></li>
+                <li><a href="#">Privacy policy</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="copyright text-center">
         <div
-          class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+          class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center"
+        >
           <h5 class="d-flex mt-2">Contact us on social networks</h5>
           <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-            <a href=""><i class="bi bi-tiktok"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-whatsapp"></i></a>
-            <a href=""><i class="bi bi-snapchat"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
+            <a target="_blank" href="https://www.tiktok.com/@tifehairhaven?_t=8rd0bqeKCx6&_r=1"><i class="bi bi-tiktok"></i></a>
+            <a target="_blank" href="https://www.instagram.com/tifehairhaven?igsh=MXR0bXkzM3duNGMxeg=="><i class="bi bi-instagram"></i></a>
+            <a target="_blank" href="https://wa.link/j9z0ah"><i class="bi bi-whatsapp"></i></a>
+            <a target="_blank" href="https://snapchat.com/t/NG4MTmxr"><i class="bi bi-snapchat"></i></a>
           </div>
         </div>
       </div>

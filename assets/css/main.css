@@ -69,6 +69,27 @@ button {
   border: none;
 }
 
+/* Logo Styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
 
 /* Close Button */
 .close {
@@ -216,7 +237,7 @@ button {
 }
 
 .btn-confirm {
-  background-color: #28a745;
+  background-color: var(--accent-color);
   color: #ffffff;
   padding: 10px 20px;
   border: none;
@@ -903,6 +924,39 @@ section,
   margin-bottom: 0;
 }
 
+
+.social-links {
+  display: none;
+}
+
+@media (min-width: 1199px) {
+  .social-links {
+    display: flex;
+    font-size: 22px;
+    color: var(--contrast-color);
+    line-height: 1;
+    text-align: center;
+    transition: 0.3s;
+  }
+}
+
+.mobile-social-links {
+  display: none;
+}
+
+/* Show mobile-social-links only for screens smaller than 1000px */
+@media (max-width: 1199px) {
+  .mobile-social-links {
+    display: flex;
+    font-size: 20px;
+    color: var(--contrast-color);
+    line-height: 1;
+    text-align: center;
+    transition: 0.3s;
+  }
+}
+
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -920,6 +974,7 @@ section,
   margin: 0 0 10px 0;
   font-size: 48px;
   font-weight: 300;
+  color: var(--accent-color);
 }
 
 .hero h1 span {
@@ -1111,24 +1166,6 @@ section,
   color: #ccc;
 }
 
-/* Confirm and Close buttons styling */
-.btn-confirm {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.close-modal-btn {
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
 /* Form controls styling */
 .form-control {
@@ -1848,7 +1885,6 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   margin: 0;
 }
 
