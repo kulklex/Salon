@@ -361,8 +361,40 @@ h6 {
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: static;
 }
 
+
+.header-class {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (max-width: 768px) {
+  .header {
+    color: var(--default-color);
+    background-color: var(--background-color);
+    padding: 20px 0;
+    transition: all 0.5s;
+    z-index: 997;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: static;
+  }
+
+  .header-class {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
 
 
 .scrolled .header {
@@ -1019,10 +1051,18 @@ section,
   margin-bottom: 0;
 }
 
+.social-links {
+  display: flex;
+  font-size: 22px;
+  color: var(--contrast-color);
+  line-height: 1;
+  text-align: center;
+  transition: 0.3s;
+}
 
-@media (min-width: 1199px) {
+@media (max-width: 768px) {
   .social-links {
-    display: flex;
+    display: none;
     font-size: 22px;
     color: var(--contrast-color);
     line-height: 1;
