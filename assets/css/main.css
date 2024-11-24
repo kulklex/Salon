@@ -1061,7 +1061,7 @@ section,
 }
 
 @media (max-width: 768px) {
-  .social-links {
+  .header .social-links {
     display: none;
     font-size: 22px;
     color: var(--contrast-color);
