@@ -248,9 +248,9 @@ button {
 }
 
 .btn-confirm:hover {
-  background-color: #218838;
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
-
 
 
 a {
@@ -1274,16 +1274,6 @@ section,
 
 .custom-modal-body {
   padding: 16px;
-}
-
-.custom-modal-footer {
-  padding: 16px;
-  border-top: 1px solid #ddd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
 }
 
 /* Close button styling in header */
