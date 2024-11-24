@@ -1036,7 +1036,7 @@ section,
 }
 
 /* Show mobile-social-links only for screens smaller than 1000px */
-@media (max-width: 1199px) {
+@media (max-width: 768px) {
   .mobile-social-links {
     display: flex;
     font-size: 20px;
