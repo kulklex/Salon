@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const noBookingsMessage = document.getElementById("noBookingsMessage");
   const removePastBookingsBtn = document.getElementById("removePastBookings");
 
-  const API_URL = "http://app.tifehairhaven.co.uk/api/v1";
+  const API_URL = "https://app.tifehairhaven.co.uk/api/v1";
 
   // Function to show a custom alert
   function showAlert(message) {

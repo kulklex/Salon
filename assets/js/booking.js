@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API_URL = 'http://app.tifehairhaven.co.uk/api/v1'; 
+  const API_URL = 'https://app.tifehairhaven.co.uk/api/v1'; 
 
   // Elements for opening and closing the modal
   const openModalBtn = document.getElementById("openBookingSystem");
