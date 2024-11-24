@@ -149,7 +149,6 @@ function initializeDatePicker(unavailableDates = []) {
     const selectedStyle = document.getElementById("styleSelect").value;
     const bookingNote = document.getElementById("bookingNote").value;
 
-    // Validation
     if (!date || !time || !customerName || !customerEmail || !customerPhone || selectedStyle === "") {
       showAlert("Please fill in all details.");
       return;
@@ -176,13 +175,49 @@ function initializeDatePicker(unavailableDates = []) {
     }
   });
 
+
+  // Send a form message
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+  
+    const formData = new FormData(this);
+    const formDataObj = {};
+    formData.forEach((value, key) => { formDataObj[key] = value });
+  
+    try {
+      const response = await fetch(`${API_URL}/bookings/send-message`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataObj)
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        showAlert("Your message has been sent successfully!", 'success');
+        document.getElementById('contactForm').reset();
+      } else {
+        const errorMessage = data.message || "An error occurred. Please try again.";
+        showAlert(errorMessage, 'error');
+      }
+    } catch (error) {
+      // Handle fetch or network errors
+      console.error('Error:', error);
+      showAlert("Error sending message. Please try again.", 'error');
+    }
+  });
+  
+
+
   // Function to show a custom alert message
   function showAlert(message) {
     const alertBox = document.createElement("div");
     alertBox.className = "custom-alert";
     alertBox.innerHTML = `<div class="alert-content"><span>${message}</span></div>`;
     document.body.appendChild(alertBox);
-    setTimeout(() => alertBox.remove(), 3000);
+    setTimeout(() => alertBox.remove(), 4000);
   }
 
     // Function to fetch and remove past unavailable dates

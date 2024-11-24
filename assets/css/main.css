@@ -632,6 +632,102 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact .info {
+  background-color: var(--surface-color);
+  padding: 40px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.contact .info h3 {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.contact .info p {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.contact .info-item+.info-item {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.contact .info-item i {
+  font-size: 24px;
+  color: var(--accent-color);
+  transition: all 0.3s ease-in-out;
+  margin-right: 20px;
+}
+
+.contact .info-item h4 {
+  padding: 0;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.contact .email-form {
+  width: 100%;
+}
+
+.contact .email-form .form-group {
+  padding-bottom: 8px;
+}
+
+.contact .email-form input[type=text],
+.contact .email-form input[type=email],
+.contact .email-form textarea {
+  border-radius: 0px;
+  box-shadow: none;
+  font-size: 14px;
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.contact .email-form input[type=text]:focus,
+.contact .email-form input[type=email]:focus,
+.contact .email-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.contact .email-form input[type=text],
+.contact .email-form input[type=email] {
+  height: 48px;
+  padding: 10px 15px;
+}
+
+.contact .email-form textarea {
+  padding: 10px 12px;
+  height: 290px;
+}
+
+.contact .email-form button[type=submit] {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border: 0;
+  padding: 13px 50px;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.contact .email-form button[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color) 90%, black 15%);
+}
+
+/*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
@@ -648,7 +744,7 @@ h6 {
 
 .footer .footer-about .logo {
   line-height: 1;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .footer .footer-about .logo img {
@@ -674,7 +770,7 @@ h6 {
   font-weight: 600;
   position: relative;
   padding-bottom: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .footer h4::after {
@@ -923,10 +1019,6 @@ section,
   margin-bottom: 0;
 }
 
-
-.social-links {
-  display: none;
-}
 
 @media (min-width: 1199px) {
   .social-links {
@@ -1180,9 +1272,9 @@ section,
 
 /* Custom alert box styling */
 .custom-alert {
-  position: absolute;
+  position: fixed;
   top: 20px;
-  right: 40%;
+  right: 20px;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -1195,6 +1287,15 @@ section,
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1100;
 }
+
+@media (max-width: 768px) {
+  .custom-alert {
+    right: 10px;
+    top: 10px;
+    max-width: 90%;
+  }
+}
+
 
 .alert-content {
   display: flex;
