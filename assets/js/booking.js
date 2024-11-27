@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const API_URL = 'https://app.tifehairhaven.co.uk/api/v1'; 
+  const API_URL = 'http://localhost:5000/api/v1'; 
 
   // Elements for opening and closing the modal
   const openModalBtn = document.getElementById("openBookingSystem");
@@ -8,6 +8,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const closeModalBtn = document.getElementById("closeModal")
   
   const removePastUnavailableDatesBtn = document.getElementById("removePastDates");
+
+
+  // Success and Cancel Payment 
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get("status");
+
+  if (status === "success") {
+    showAlert("Payment successful! Your booking is confirmed.", "success");
+  } else if (status === "canceled") {
+    showAlert("Payment canceled. Please try again.", "error");
+  }
+
+
+   // Remove the status query parameter from the URL
+   if (status) {
+    const newUrl = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, newUrl);
+  }
 
   // Function to show the modal
   function showModal() {
@@ -139,41 +157,43 @@ function initializeDatePicker(unavailableDates = []) {
     });
   }
 
-  // Confirm Booking function
-  document.getElementById("confirmBooking").addEventListener("click", async function () {
-    const date = document.getElementById("bookingDate").value;
-    const time = document.getElementById("bookingTime").value;
-    const customerName = document.getElementById("customerName").value;
-    const customerEmail = document.getElementById("customerEmail").value;
-    const customerPhone = document.getElementById("customerPhone").value;
-    const selectedStyle = document.getElementById("styleSelect").value;
-    const bookingNote = document.getElementById("bookingNote").value;
+ document.getElementById("confirmBooking").addEventListener("click", async function () {
+  const date = document.getElementById("bookingDate").value;
+  const time = document.getElementById("bookingTime").value;
+  const customerName = document.getElementById("customerName").value;
+  const customerEmail = document.getElementById("customerEmail").value;
+  const customerPhone = document.getElementById("customerPhone").value;
+  const selectedStyle = document.getElementById("styleSelect").value;
+  const bookingNote = document.getElementById("bookingNote").value;
 
-    if (!date || !time || !customerName || !customerEmail || !customerPhone || selectedStyle === "") {
-      showAlert("Please fill in all details.");
-      return;
+  if (!date || !time || !customerName || !customerEmail || !customerPhone || selectedStyle === "") {
+    showAlert("Please fill in all details.");
+    return;
+  }
+
+  try {
+    // Create the booking and get the Stripe session ID
+    const response = await fetch(`${API_URL}/bookings/create-booking`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone, selectedStyle, bookingNote }),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      const stripe = Stripe("pk_live_51QPVvNCKHodMFlYyCcfsD7QwCMZQmOC1t24cSxGZnCTtVBANlB45oiems5ViNWLUhr93e018AQRUrYOyGb0BedaW00RxUMSMOw");
+      await stripe.redirectToCheckout({ sessionId: data.id });
+    } else {
+      showAlert(data.message || "Error initiating payment.");
     }
+  } catch (error) {
+    console.error("Error:", error);
+    showAlert("Error creating booking. Try again later.");
+  }
+});
 
-    try {
-      const response = await fetch(`${API_URL}/bookings/create-booking`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ date, time, customerName, customerEmail, customerPhone, selectedStyle, bookingNote }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        showAlert("Booking confirmed!");
-        hideModal();
-      } else {
-        showAlert(data.message);
-      }
-    } catch (error) {
-      showAlert("Error creating booking. Try again later.");
-    }
-  });
 
 
   // Send a form message
