@@ -1303,7 +1303,7 @@ section,
 /* Custom alert box styling */
 .custom-alert {
   position: fixed;
-  top: 20px;
+  top: 50px;
   right: 20px;
   display: flex;
   justify-content: center;
@@ -1320,8 +1320,8 @@ section,
 
 @media (max-width: 768px) {
   .custom-alert {
-    right: 10px;
-    top: 10px;
+    right: 50px;
+    top: 20px;
     max-width: 90%;
   }
 }
@@ -1474,7 +1474,6 @@ section,
   margin-right: 8px;
   color: var(--accent-color);
 }
-
 
 
 /*--------------------------------------------------------------
