@@ -108,132 +108,130 @@
       <!-- /Hero Section -->
 
       <!-- Booking Modal -->
-      <section>
-        <div id="bookingModal" class="custom-modal" style="display: none">
-          <div class="custom-modal-dialog">
-            <div class="custom-modal-content">
-              <!-- Modal Header -->
-              <div class="custom-modal-header text-center">
-                <h5 class="custom-modal-title">Pay £15 Deposit to Confirm Booking</h5>
-                <button type="button" class="close-btn" id="closeModal">
-                  &times;
-                </button>
+      <div id="bookingModal" class="custom-modal" style="display: none">
+        <div class="custom-modal-dialog">
+          <div class="custom-modal-content">
+            <!-- Modal Header -->
+            <div class="custom-modal-header text-center">
+              <h5 class="custom-modal-title">Pay £15 Deposit to Confirm Booking</h5>
+              <button type="button" class="close-btn" id="closeModal">
+                &times;
+              </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="custom-modal-body">
+              <!-- Date Selection -->
+              <div class="form-group">
+                <label for="bookingDate">Select an available Date</label>
+                <input
+                  type="text"
+                  id="bookingDate"
+                  class="form-control"
+                  placeholder="Click to select date"
+                  required
+                />
               </div>
 
-              <!-- Modal Body -->
-              <div class="custom-modal-body">
-                <!-- Date Selection -->
-                <div class="form-group">
-                  <label for="bookingDate">Select Date</label>
-                  <input
-                    type="text"
-                    id="bookingDate"
-                    class="form-control"
-                    placeholder="Click to select date"
-                    required
-                  />
-                </div>
-
-                <!-- Time Selection -->
-                <div class="form-group">
-                  <label for="bookingTime">Select Time</label>
-                  <select id="bookingTime" class="form-control" required>
-                    <option value="">Choose a time slot...</option>
-                    <option value="08:00 AM">08:00 AM</option>
-                    <option value="10:00 AM">10:00 AM</option>
-                    <option value="12:00 PM">12:00 PM</option>
-                    <option value="15:00 PM">03:00 PM</option>
-                    <option value="17:00 PM">05:00 PM</option>
-                  </select>
-                  <small id="availabilityStatus" class="form-text mt-2"
-                    >Please select an available time.</small
-                  >
-                </div>
-
-                <!-- Customer Details -->
-                <div class="form-group">
-                  <label for="customerName">Name</label>
-                  <input
-                    type="text"
-                    id="customerName"
-                    class="form-control"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="customerEmail">Email</label>
-                  <input
-                    type="email"
-                    id="customerEmail"
-                    class="form-control"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="customerPhone">Phone</label>
-                  <input
-                    type="tel"
-                    id="customerPhone"
-                    class="form-control"
-                    required
-                  />
-                </div>
-
-                <!-- Style Selection -->
-                <div class="form-group">
-                  <label for="styleSelect">Choose a Style</label>
-                  <select id="styleSelect" class="form-control" required>
-                    <option value="" disabled selected hidden>
-                      Click to select a style
-                    </option>
-                    <option value="Box braids">Box Braids</option>
-                    <option value="Goddess braids">Goddess Braids</option>
-                    <option value="Knotless Braids">Knotless Braids</option>
-                    <option value="Faux Locs">Faux Locs</option>
-                    <option value="Starter Locs">Starter Locs</option>
-                    <option value="Feed-in Cornrows">Feed-in Cornrows</option>
-                    <option value="Dread Twist">Dread Twist</option>
-                    <option value="Cornrows">Cornrows</option>
-                    <option value="Boys Cornrows">Boys Cornrows</option>
-                    <option value="Stitch cornrows">Stitch Cornrows</option>
-                    <option value="Wig cornrows">Wig Cornrows</option>
-                    <option value="Singles Twist">Singles Twist</option>
-                    <option value="Plug Twist">Plug Twist</option>
-                    <option value="Barrel twist">Barrel twist</option>
-                    <option value="Silk Press">Silk Press</option>
-                    <option value="Deep Conditioning / Hydration Treatment">
-                      Deep Conditioning / Hydration Treatment
-                    </option>
-                    <option value="Scalp Treatment">Scalp Treatment</option>
-                    <option value="Wash and Go">Wash and Go</option>
-                  </select>
-                </div>
-
-                <!-- Note Section -->
-                <div class="form-group">
-                  <label for="bookingNote"
-                    >Add a note for extra services
-                  </label>
-                  <textarea
-                    id="bookingNote"
-                    name="bookingNote"
-                    rows="4"
-                    class="form-control"
-                    placeholder="Optional"
-                  ></textarea>
-                </div>
+              <!-- Time Selection -->
+              <div class="form-group">
+                <label for="bookingTime">Select Time</label>
+                <select id="bookingTime" class="form-control" required>
+                  <option value="">Choose a time slot...</option>
+                  <option value="08:00 AM">08:00 AM</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="12:00 PM">12:00 PM</option>
+                  <option value="15:00 PM">03:00 PM</option>
+                  <option value="17:00 PM">05:00 PM</option>
+                </select>
+                <small id="availabilityStatus" class="form-text mt-2"
+                  >Please select an available time.</small
+                >
+              </div>
+              
+              <!-- Style Selection -->
+              <div class="form-group">
+                <label for="styleSelect">Choose a Style</label>
+                <select id="styleSelect" class="form-control" required>
+                  <option value="" disabled selected hidden>
+                    Click to select a style
+                  </option>
+                  <option value="Box braids">Box Braids</option>
+                  <option value="Goddess braids">Goddess Braids</option>
+                  <option value="Knotless Braids">Knotless Braids</option>
+                  <option value="Faux Locs">Faux Locs</option>
+                  <option value="Starter Locs">Starter Locs</option>
+                  <option value="Feed-in Cornrows">Feed-in Cornrows</option>
+                  <option value="Dread Twist">Dread Twist</option>
+                  <option value="Cornrows">Cornrows</option>
+                  <option value="Boys Cornrows">Boys Cornrows</option>
+                  <option value="Stitch cornrows">Stitch Cornrows</option>
+                  <option value="Wig cornrows">Wig Cornrows</option>
+                  <option value="Singles Twist">Singles Twist</option>
+                  <option value="Plug Twist">Plug Twist</option>
+                  <option value="Barrel twist">Barrel twist</option>
+                  <option value="Silk Press">Silk Press</option>
+                  <option value="Deep Conditioning / Hydration Treatment">
+                    Deep Conditioning / Hydration Treatment
+                  </option>
+                  <option value="Scalp Treatment">Scalp Treatment</option>
+                  <option value="Wash and Go">Wash and Go</option>
+                </select>
               </div>
 
-              <!-- Modal Footer -->
-              <div class="custom-modal-footer">
-                <button id="confirmBooking" class="btn-confirm">
-                  Deposit
-                </button>
+              <!-- Customer Details -->
+              <div class="form-group">
+                <label for="customerName">Name</label>
+                <input
+                  type="text"
+                  id="customerName"
+                  class="form-control"
+                  required
+                />
               </div>
+              <div class="form-group">
+                <label for="customerEmail">Email</label>
+                <input
+                  type="email"
+                  id="customerEmail"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="customerPhone">Phone</label>
+                <input
+                  type="tel"
+                  id="customerPhone"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <!-- Note Section -->
+              <div class="form-group">
+                <label for="bookingNote"
+                  >Add a note for extra services
+                </label>
+                <textarea
+                  id="bookingNote"
+                  name="bookingNote"
+                  rows="4"
+                  class="form-control"
+                  placeholder="Optional"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="custom-modal-footer">
+              <button id="confirmBooking" class="btn-confirm">
+                Deposit
+              </button>
             </div>
           </div>
         </div>
-      </section>
+      </div>
       <!-- /Booking Modal -->
 
       <!-- Custom Alert Box -->
@@ -381,7 +379,7 @@
                           <td>Starter Locs</td>
                           <td>4–5 hrs</td>
                           <td>£50</td>
-                          <td>Natural locs, offering a protective look without the commitment.</td>
+                          <td>Initial stage of the natural locing process, offering a protective look without the commitment.</td>
                         </tr>
                           <td>Feed-in braids/cornrows</td>
                           <td>1–4 hrs</td>
@@ -436,7 +434,7 @@
                           <td>Boys Cornrows</td>
                           <td>1 hour</td>
                           <td>£25</td>
-                          <td>Classic and modern cornrow styles.</td>
+                          <td>Classic and modern cornrow styles for males.</td>
                         </tr>
                         <tr>
                           <td>Stitch Cornrows</td>
@@ -448,7 +446,7 @@
                           <td>Wig Cornrows</td>
                           <td>Under an hour</td>
                           <td>£15</td>
-                          <td>Stylish and intricate stitch cornrow designs.</td>
+                          <td>Braiding hair underneath a wig cap to create a sleek and secure base for the wig, providing a natural-looking and long-lasting hairstyle.</td>
                         </tr>
                         <tr>
                           <td>Cornrow / Singles</td>
@@ -478,7 +476,7 @@
                           <td>Plug Twist</td>
                           <td>2–4 hrs</td>
                           <td>£40</td>
-                          <td>Defined twist styles tailored to your preferences.</td>
+                          <td>Defined twist styles tailored around a plug or tool to create defined, elongated curls.</td>
                         </tr>
                         <tr>
                           <td>Barrel Twist</td>
