@@ -106,15 +106,6 @@ function initializeDatePicker(unavailableDates = []) {
     resetTimeOptions();
   }
 
-  // Reset all time options to be enabled and available
-  function resetTimeOptions() {
-    document.querySelectorAll("#bookingTime option").forEach((option) => {
-      option.classList.remove("disabled-slot", "slot-unavailable", "slot-available");
-      option.disabled = false;
-      option.textContent = option.value ? `${option.value}` : "Choose a time slot...";
-    });
-  }
-
   // Check availability when a date is selected
   bookingDateInput.addEventListener("change", async function () {
     const date = this.value;
@@ -132,8 +123,10 @@ function initializeDatePicker(unavailableDates = []) {
         if (data.unavailable) {
           showAlert("This date is unavailable for booking.");
           bookingDateInput.value = ""; // Clear the selected date
-        } else {
-          updateTimeSlots(data.unavailableTimes || []);
+        }
+
+        if (data.unavailableSlots || data.unavailableTimes) {
+          updateTimeSlots(data.unavailableTimes || [], data.unavailableSlots || []);
         }
       } catch (error) {
         document.getElementById("availabilityStatus").innerHTML = `<span class="text-danger">Error loading availability. Please try again.</span>`;
@@ -141,19 +134,33 @@ function initializeDatePicker(unavailableDates = []) {
     }
   });
 
+    // Reset all time options to be enabled and available
+    function resetTimeOptions() {
+      document.querySelectorAll("#bookingTime option").forEach((option) => {
+        option.classList.remove("disabled-slot", "slot-unavailable", "slot-available");
+        option.disabled = false;
+        option.textContent = option.value ? `${option.value}` : "Choose a time slot...";
+      });
+    }
+
   // Disable unavailable time slots in the dropdown
-  function updateTimeSlots(unavailableTimes) {
+  function updateTimeSlots(unavailableTimes, unavailableSlots) {
     const timeOptions = document.querySelectorAll("#bookingTime option");
+    
     timeOptions.forEach((option) => {
-      if (option.value) {
-        if (unavailableTimes.includes(option.value)) {
-          option.classList.add("disabled-slot", "slot-unavailable");
-          option.textContent = `${option.value} (Unavailable)`;
+      const timeValue = option.value;
+  
+      
+        // Check if the time is in unavailableTimes or unavailableSlots
+        if (unavailableTimes.includes(timeValue) || unavailableSlots.includes(timeValue)) {
           option.disabled = true;
+          option.classList.add("disabled-slot", "slot-unavailable");
+          option.textContent = `${timeValue} (Unavailable)`;
         } else {
-          option.classList.add("slot-available");
+          option.disabled = false;
+          option.classList.remove("disabled-slot", "slot-unavailable");
+          option.textContent = timeValue; // Reset text to default
         }
-      }
     });
   }
 
@@ -169,6 +176,25 @@ function initializeDatePicker(unavailableDates = []) {
   if (!date || !time || !customerName || !customerEmail || !customerPhone || selectedStyle === "") {
     showAlert("Please fill in all details.");
     return;
+  }
+
+  const disAllowedForLateBooking = ["Small Box braids",
+      "Medium Box braids",
+      "Small Goddess braids",
+      "Medium Goddess braids",
+      "Small Knotless Braids",
+      "Medium Knotless Braids",
+      "Big Knotless Braids",
+      "Faux Locs"
+    ]
+
+    const disAllowedTimesForLateBooking = [
+      "04:00 PM", "05:00 PM"
+    ]
+ 
+  if (disAllowedForLateBooking.includes(selectedStyle) && disAllowedTimesForLateBooking.includes(time)) {
+    showAlert(`${selectedStyle} cannot be booked after 3pm!`);
+    return
   }
 
   try {

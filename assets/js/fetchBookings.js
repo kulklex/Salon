@@ -80,7 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function (event) {
     if (event.target.classList.contains("btn-delete-booking")) {
       const bookingId = event.target.getAttribute("data-booking-id");
-      deleteBooking(bookingId);
+      if (confirm(`Are you sure you want to delete booking?`)) {
+        deleteBooking(bookingId);
+      } else {
+        // User canceled deletion
+      }
     }
   });
 
