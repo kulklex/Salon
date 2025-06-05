@@ -64,8 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
       bookingElement.className = "booking-entry";
       bookingElement.innerHTML = `
           <div>
+            <p><strong>Customer Name:</strong> ${booking.customerName}</p>
             <p><strong>Date:</strong> ${booking.date}</p>
             <p><strong>Time:</strong> ${booking.time}</p>
+            <p><strong>Email:</strong> ${booking.customerEmail}</p>
+            <p><strong>Phone:</strong> ${booking.customerPhone}</p>
+            <p><strong>Service:</strong> ${booking.selectedStyle}</p>
+            <p><strong>Extra:</strong> ${booking.bookingNote}</p>
           </div>
           <button class="btn-delete-booking" data-booking-id="${booking._id}">Delete Booking</button>
         `;
