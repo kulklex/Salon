@@ -1893,7 +1893,17 @@ section,
   cursor: pointer;
   border-radius: 4px;
 }
-
+@media (max-width: 1000px) {
+  .booking-entry {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .booking-entry div {
+    text-align:left
+  }
+}
 .booking-entry button:hover {
   background-color: #c9302c;
 }

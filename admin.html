@@ -4,16 +4,39 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Admin Dashboard</title>
-    <meta name="description" content="Tifehairhaven specializes in natural hair care, braiding, and protective styles in London. Book your appointment today for expert services tailored to your needs." />
-    <meta name="keywords" content="natural hair care, braiding salon, protective styles, London hair salon, braids, locs, dreads, twists, Tifehairhaven" />
-
+    <meta
+      name="description"
+      content="Tifehairhaven specializes in natural hair care, braiding, and protective styles in London. Book your appointment today for expert services tailored to your needs."
+    />
+    <meta
+      name="keywords"
+      content="natural hair care, braiding salon, protective styles, London hair salon, braids, locs, dreads, twists, Tifehairhaven"
+    />
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico" type="image/png">
-    <link rel="icon" href="assets/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link
+      rel="shortcut icon"
+      href="assets/favicon/favicon.ico"
+      type="image/png"
+    />
+    <link rel="icon" href="assets/favicon/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -100,20 +123,7 @@
         </div>
       </div>
 
-      
-
       <div class="row">
-        <!-- Display List of Unavailable Dates -->
-        <div id="userBookingsSection" class="col-md-6 col-sm-12">
-          <h2>Unavailable Dates</h2>
-          <!-- <div class="d-flex justify-content-center align-content-center">
-            <button id="removePastDates" class="btn btn-danger">Clear Old Dates</button>
-          </div> -->
-          <div id="unavailableDatesList" class="unavailable-dates-list mt-3">
-            <!-- Unavailable dates will be dynamically inserted here -->
-          </div>
-        </div>
-
         <!-- Display All Bookings -->
         <div id="userBookingsSection" class="col-md-6 col-sm-12">
           <h2>Your Bookings</h2>
@@ -127,27 +137,37 @@
             No bookings found
           </h1>
         </div>
+
+        <!-- Display List of Unavailable Dates -->
+        <div id="userBookingsSection" class="col-md-6 col-sm-12">
+          <h2>Unavailable Dates</h2>
+          <!-- <div class="d-flex justify-content-center align-content-center">
+            <button id="removePastDates" class="btn btn-danger">Clear Old Dates</button>
+          </div> -->
+          <div id="unavailableDatesList" class="unavailable-dates-list mt-3">
+            <!-- Unavailable dates will be dynamically inserted here -->
+          </div>
+        </div>
       </div>
     </section>
 
-     <!-- Scroll Top -->
-     <a
-     href="#"
-     id="scroll-top"
-     class="scroll-top d-flex align-items-center justify-content-center"
-     ><i class="bi bi-arrow-up-short"></i
-   ></a>
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
-   <!-- Preloader -->
-   <div id="preloader"></div>
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/admin.js"></script>
+    <script src="assets/js/fetchBookings.js"></script>
 
-   <script src="assets/js/main.js"></script>
-   <script src="assets/js/admin.js"></script>
-   <script src="assets/js/fetchBookings.js"></script>
-
-  <!-- Flatpickr JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- Flatpickr JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
