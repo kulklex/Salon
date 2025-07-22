@@ -27,35 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.history.replaceState({}, document.title, newUrl);
   }
 
-  // Function to show the modal
-  function showModal() {
-    bookingModal.style.display = "flex";
-    resetModal(); // Reset modal UI on open
-  }
-
-  // Function to hide the modal
-  function hideModal() {
-    bookingModal.style.display = "none";
-    resetModal();
-  }
-
-  // Open modal when "Book an Appointment" button is clicked
-  openModalBtn.addEventListener("click", function (event) {
-    showModal();
-  });
-
-  // Close modal when the close button is clicked
-  if (closeModalBtn) {
-    closeModalBtn.addEventListener("click", hideModal);
-  }
-
-  // Close modal when clicking outside the modal content
-  window.addEventListener("click", function (event) {
-    if (event.target === bookingModal) {
-      hideModal();
-    }
-  });
-
 
   // Initialize Flatpickr on the date input
 function initializeDatePicker(unavailableDates = []) {
@@ -97,6 +68,36 @@ function initializeDatePicker(unavailableDates = []) {
   }
 
   fetchUnavailableDates(); // Initialize Flatpickr with unavailable dates from API
+
+// Function to show the modal
+  function showModal() {
+    bookingModal.style.display = "flex";
+    resetModal(); // Reset modal UI on open
+  }
+
+  // Function to hide the modal
+  function hideModal() {
+    bookingModal.style.display = "none";
+    resetModal();
+  }
+
+  // Open modal when "Book an Appointment" button is clicked
+  openModalBtn.addEventListener("click", function (event) {
+    fetchUnavailableDates(); // Refresh fresh dates before opening
+    showModal();
+  });
+
+  // Close modal when the close button is clicked
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", hideModal);
+  }
+
+  // Close modal when clicking outside the modal content
+  window.addEventListener("click", function (event) {
+    if (event.target === bookingModal) {
+      hideModal();
+    }
+  });
 
   // Reset modal form and UI
   function resetModal() {
